@@ -1,3 +1,8 @@
+# Async Extensions
+Status: `Experimental`
+
+
+## Table Of Contents
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 <details>
@@ -12,23 +17,8 @@
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-
-## <a id="async-bindings"></a>Async Extensions <smal><sub>*Experimental*</sub>
-
-
-## Table Of Contents
-
-* Introduction
-    * <a href="#async-and-di">`async` in DI</a>
-    * <a href="#example">Example</a>
-* Advanced
-    * <a href="#static-memory-pool">Static Memory Pools</a>
-    * <a href="#usingstatement">Using statements and dispose pattern</a>
-
-
-
 ## Introduction
-### <a id="async-and-di"></a>Async in DI
+### Async in DI
 
 In dependency injection, the injector resolves dependencies of the target class only once, often after class is first created. In other words, injection is a one time process that does not track the injected dependencies to update them later on. If a dependency is not ready at the moment of injection, either the binding wouldn't resolve in case of optional bindings or would fail completely throwing an error.
 
@@ -36,7 +26,7 @@ This creates a dilemma while implementing dependencies that are resolved asynchr
 
 Alternatively you can inject an intermediary object that tracks the result of the `async` operation. When you need to access the dependency, you can use this intermediary object to check if the `async` task is completed and get the resulting object. With the experimental `async` support, we would like to provide ways to tackle this problem in Extenject. You can find `async` extensions in the folder **Plugins/Zenject/OptionalExtras/Async**.
 
-### <a id="example"></a>Example
+### Example
 
 Lets see how we can inject async dependencies through an intermediary object. Async extensions implements `AsyncInject<T>` as this intermediary. You can use it as follows. 
 
