@@ -825,7 +825,7 @@ With high ratings and great reviews on both the Apple App Store and the Google P
 </p>
 
 <p align="center">
-  <a href="http://bedtimemath.org/bedtimemath-app/">Website</a> • 
+  <a href="https://bedtimemath.org/what-we-do/apps/">Website</a> • 
   <a href="https://apps.apple.com/us/app/bedtimemath/id637910701">App Store</a> • 
   <a href="https://play.google.com/store/apps/details?id=com.twofours.bedtimemath">Google Play</a>
 </p>

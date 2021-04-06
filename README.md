@@ -2650,7 +2650,7 @@ Unfortunately, Unity does not guarantee a deterministic destruction order in thi
 
 If the scene destruction order is important to you, then you might consider also changing the ZenjectSetting `Ensure Deterministic Destruction Order On Application Quit` to true.  When this is set to true, this will cause all scenes to be forcefully destroyed during the OnApplicationQuit event, using a more sensible order than what unity does by default.  It will first destroy all scenes in the reverse order that they were loaded in (so that earlier loaded scenes are destroyed later) and will finish by destroying the DontDestroyOnLoad objects which include project context.
 
-The reason this setting is not set to true by default is because it can cause crashes on Android as discussed [here](https://github.com/modesttree/Zenject/issues/301).
+The reason this setting is not set to true by default is because it can cause crashes on Android as discussed [here](https://github.com/ssannandeji/Zenject-2019/issues/301).
 
 ## UniRx Integration
 
@@ -2941,8 +2941,7 @@ Another change that may cause issues is that for every binding that is a lookup 
 
 So if you were previously using one of these methods to match multiple values you will have to change to use the plural version instead.
 
-Another change worth mentioning is that the default value for the 'includeInactive' flag passed to the FromComponent methods was changed from false to true as discussed [here](https://github.com/modesttree/Zenject/issues/275#issuecomment-377619400)
-
+Another change worth mentioning is that the default value for the 'includeInactive' flag passed to the FromComponent methods was changed from false to true as discussed [here](https://github.com/ssannandeji/Zenject-2019/issues/275)
 There were also a few things that were renamed:
 
 - `Factory<>` is now called `PlaceholderFactory<>` (in this case you should just get warnings about it however)
