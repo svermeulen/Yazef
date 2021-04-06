@@ -8,11 +8,9 @@
 <details>
 <summary>Details</summary>
 
-- [<a id="async-bindings"></a>Async Extensions <smal><sub>*Experimental*</sub>](#a-idasync-bindingsaasync-extensions-smalsubexperimentalsub)
-- [Table Of Contents](#table-of-contents)
 - [Introduction](#introduction)
-  - [<a id="async-and-di"></a>Async in DI](#a-idasync-and-diaasync-in-di)
-  - [<a id="example"></a>Example](#a-idexampleaexample)
+  - [Async in DI](#async-in-di)
+  - [Example](#example)
 
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
