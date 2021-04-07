@@ -5,7 +5,7 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/Mathijs-Bakker/Extenject)
 ![GitHub contributors](https://img.shields.io/github/contributors/Mathijs-Bakker/Extenject)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Mathijs-Bakker/Extenject)
-![Continuous Integration](https://github.com/Mathijs-Bakker/Extenject/workflows/Continuous%20Integration/badge.svg?branch=master)
+[![CI](https://github.com/Mathijs-Bakker/Extenject/actions/workflows/main.yml/badge.svg)](https://github.com/Mathijs-Bakker/Extenject/actions/workflows/main.yml)
 ![GitHub](https://img.shields.io/github/license/Mathijs-Bakker/Extenject)
 
 # Extenject: extensions, bug fixes and updates for Zenject 
