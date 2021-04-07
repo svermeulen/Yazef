@@ -1,7 +1,7 @@
 ![Extenject Header Image](Documentation/Images/ExtenjectMainHeader.png)
 
 [![Gitter](https://img.shields.io/static/v1?label=Gitter&labelColor=ED1965&message=Support&color=grey&logo=Gitter&logoColor=White&url=https://gitter.im/Extenject/community)](https://gitter.im/Extenject/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/svermeulen/Extenject?color=green)](https://github.com/Mathijs-Bakker/Extenject/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Mathijs-Bakker/Extenject?color=green)](https://github.com/Mathijs-Bakker/Extenject/releases)
 ![GitHub Release Date](https://img.shields.io/github/release-date/Mathijs-Bakker/Extenject)
 ![GitHub contributors](https://img.shields.io/github/contributors/Mathijs-Bakker/Extenject)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Mathijs-Bakker/Extenject)
