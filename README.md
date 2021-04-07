@@ -1,12 +1,12 @@
 ![Extenject Header Image](Documentation/Images/ExtenjectMainHeader.png)
 
 [![Gitter](https://img.shields.io/static/v1?label=Gitter&labelColor=ED1965&message=Support&color=grey&logo=Gitter&logoColor=White&url=https://gitter.im/Extenject/community)](https://gitter.im/Extenject/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/svermeulen/Extenject?color=green)](https://github.com/svermeulen/Extenject/releases)
-![GitHub Release Date](https://img.shields.io/github/release-date/svermeulen/Extenject)
-![GitHub contributors](https://img.shields.io/github/contributors/svermeulen/Extenject)
-![GitHub last commit](https://img.shields.io/github/last-commit/svermeulen/Extenject)
-![Continuous Integration](https://github.com/svermeulen/Extenject/workflows/Continuous%20Integration/badge.svg?branch=master)
-![GitHub](https://img.shields.io/github/license/svermeulen/Extenject)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/svermeulen/Extenject?color=green)](https://github.com/Mathijs-Bakker/Extenject/releases)
+![GitHub Release Date](https://img.shields.io/github/release-date/Mathijs-Bakker/Extenject)
+![GitHub contributors](https://img.shields.io/github/contributors/Mathijs-Bakker/Extenject)
+![GitHub last commit](https://img.shields.io/github/last-commit/Mathijs-Bakker/Extenject)
+![Continuous Integration](https://github.com/Mathijs-Bakker/Extenject/workflows/Continuous%20Integration/badge.svg?branch=master)
+![GitHub](https://img.shields.io/github/license/Mathijs-Bakker/Extenject)
 
 # Extenject: extensions, bug fixes and updates for Zenject 
 
@@ -164,7 +164,7 @@ This project is open source.
 
 For general troubleshooting / support, please post to [stack overflow](https://stackoverflow.com/questions/ask) using the tag 'zenject', or post in the [zenject google group](https://groups.google.com/forum/#!forum/zenject/)
 
-Or, if you have found a bug, you are also welcome to create an issue on the [github page](https://github.com/svermeulen/Extenject), or a pull request if you have a fix / extension.  There is also a [gitter chat](https://gitter.im/Extenject/community) that you can join for real time discussion.  Finally, you can also email me directly at sfvermeulen@gmail.com or follow me on twitter at [@steve_verm](https://twitter.com/steve_verm)
+Or, if you have found a bug, you are also welcome to create an issue on the [github page](https://github.com/Mathijs-Bakker/Extenject), or a pull request if you have a fix / extension.  There is also a [gitter chat](https://gitter.im/Extenject/community) that you can join for real time discussion.  Finally, you can also email me directly at sfvermeulen@gmail.com or follow me on twitter at [@steve_verm](https://twitter.com/steve_verm)
 
 ## Features
 
@@ -194,15 +194,15 @@ Or, if you have found a bug, you are also welcome to create an issue on the [git
 * Support for 'reflection baking' to eliminate costly reflection operations completely by directly modifying the generated assemblies
 * Automatic injection of game objects using ZenAutoInjecter component
 
-## Installation ![GitHub release (latest by date)](https://img.shields.io/github/v/release/svermeulen/Extenject?color=green)
+## Installation ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Mathijs-Bakker/Extenject?color=green)
 
-[![GitHub releases](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub%20Releases&labelColor=181717&message=Downloads&color=green&logo=GitHub&logoColor=white)](https://github.com/svermeulen/Extenject/releases)
+[![GitHub releases](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub%20Releases&labelColor=181717&message=Downloads&color=green&logo=GitHub&logoColor=white)](https://github.com/Mathijs-Bakker/Extenject/releases)
 [![Unity](https://img.shields.io/static/v1?style=for-the-badge&label=Unity%20Asset%20Store&labelColor=181717&message=Download&color=green&logo=Unity&logoColor=white)](https://assetstore.unity.com/packages/tools/utilities/extenject-dependency-injection-ioc-157735)
-[![Unity Package](https://img.shields.io/static/v1?style=for-the-badge&label=Unity%20Package&labelColor=181717&message=UPM&color=green&logo=Unity&logoColor=white)](https://github.com/svermeulen/Extenject/issues/2)
+[![Unity Package](https://img.shields.io/static/v1?style=for-the-badge&label=Unity%20Package&labelColor=181717&message=UPM&color=green&logo=Unity&logoColor=white)](https://github.com/Mathijs-Bakker/Extenject/issues/2)
 
 You can install Zenject using any of the following methods
 
-1.  __From [Releases Page](https://github.com/svermeulen/Extenject/releases)__
+1.  __From [Releases Page](https://github.com/Mathijs-Bakker/Extenject/releases)__
     Here you can choose between the following:
 
     * **Zenject-WithAsteroidsDemo.vX.X.unitypackage** - This is equivalent to what you find in the Asset Store and contains both sample games "Asteroids" and "SpaceFighter" as part of the package.  All the source code for Zenject is included here.
