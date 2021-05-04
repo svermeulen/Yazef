@@ -55,6 +55,7 @@ namespace Zenject
                 PreResolve = null;
                 PostResolve = null;
                 _hasInstalled = false;
+                _parentContainer = null;
             }
 #endif
 
