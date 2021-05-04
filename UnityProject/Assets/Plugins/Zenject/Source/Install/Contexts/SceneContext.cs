@@ -10,6 +10,10 @@ using UnityEngine.Serialization;
 using Zenject.Internal;
 using UnityEngine.Events;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Zenject
 {
     public class SceneContext : RunnableContext
@@ -108,7 +112,7 @@ namespace Zenject
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStaticValues()
         {
-            if (!UnityEditor.EditorSettings.enterPlayModeOptionsEnabled)
+            if (!EditorSettings.enterPlayModeOptionsEnabled)
             {
                 return;
             }
@@ -124,7 +128,7 @@ namespace Zenject
 #if UNITY_EDITOR
             // When Scene Reloading is disabled in Enter The Play Mode settings, we need to reset all non-serialized fields
             // https://docs.unity3d.com/Manual/SceneReloading.html
-            if ((UnityEditor.EditorSettings.enterPlayModeOptions & UnityEditor.EnterPlayModeOptions.DisableSceneReload) != 0)
+            if (EditorSettings.enterPlayModeOptionsEnabled && (EditorSettings.enterPlayModeOptions & EnterPlayModeOptions.DisableSceneReload) != 0)
             {
                 _container = null;
                 _decoratorContexts.Clear();

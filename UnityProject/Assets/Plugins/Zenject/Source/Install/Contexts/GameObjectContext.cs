@@ -7,6 +7,10 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject.Internal;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 #pragma warning disable 649
 
 namespace Zenject
@@ -48,7 +52,7 @@ namespace Zenject
             
             // When Scene Reloading is disabled in Enter The Play Mode settings, we need to reset all non-serialized fields
             // https://docs.unity3d.com/Manual/SceneReloading.html
-            if ((UnityEditor.EditorSettings.enterPlayModeOptions & UnityEditor.EnterPlayModeOptions.DisableSceneReload) != 0)
+            if (EditorSettings.enterPlayModeOptionsEnabled && (EditorSettings.enterPlayModeOptions & EnterPlayModeOptions.DisableSceneReload) != 0)
             {
                 PreInstall = null;
                 PostInstall = null;
@@ -56,6 +60,7 @@ namespace Zenject
                 PostResolve = null;
                 _hasInstalled = false;
                 _parentContainer = null;
+                _container = null;
             }
 #endif
 

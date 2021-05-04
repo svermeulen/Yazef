@@ -93,7 +93,7 @@ namespace Zenject
 #if UNITY_EDITOR
             // When Scene Reloading is disabled in Enter The Play Mode settings, we need to reset all non-serialized fields
             // https://docs.unity3d.com/Manual/SceneReloading.html
-            if ((EditorSettings.enterPlayModeOptions & EnterPlayModeOptions.DisableSceneReload) != 0)
+            if (EditorSettings.enterPlayModeOptionsEnabled && (EditorSettings.enterPlayModeOptions & EnterPlayModeOptions.DisableSceneReload) != 0)
             {
                _normalInstallers.Clear();
                _normalInstallerTypes.Clear();
