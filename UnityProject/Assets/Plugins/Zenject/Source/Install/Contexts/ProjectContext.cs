@@ -199,8 +199,11 @@ namespace Zenject
             // Do nothing - Initialize occurs in Instance property
         }
 
-        public void Awake()
+        protected override void Awake()
         {
+            // We don't call base.Awake here because ProjectContext gets instantiated every time. 
+            
+            
             if (Application.isPlaying)
                 // DontDestroyOnLoad can only be called when in play mode and otherwise produces errors
                 // ProjectContext is created during design time (in an empty scene) when running validation
