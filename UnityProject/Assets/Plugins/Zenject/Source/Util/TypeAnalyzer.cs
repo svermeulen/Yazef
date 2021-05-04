@@ -39,6 +39,15 @@ namespace Zenject
             get; set;
         }
 
+#if UNITY_EDITOR
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStaticValues()
+        {
+            _typeInfo.Clear();
+            _allowDuringValidation.Clear();
+        }
+#endif
+
         public static bool ShouldAllowDuringValidation<T>()
         {
             return ShouldAllowDuringValidation(typeof(T));

@@ -11,7 +11,9 @@ namespace Zenject
     {
         static DiContainer _container;
 
-        // Useful sometimes to call from play mode tests
+#if UNITY_EDITOR
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+#endif
         public static void Clear()
         {
             _container = null;

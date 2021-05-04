@@ -16,6 +16,13 @@ namespace Zenject.Internal
         static GameObject _disabledIndestructibleGameObject;
 #endif
 
+#if UNITY_EDITOR
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStaticValues()
+        {
+            _disabledIndestructibleGameObject = null;
+        }
+#endif
         // Due to the way that Unity overrides the Equals operator,
         // normal null checks such as (x == null) do not always work as
         // expected

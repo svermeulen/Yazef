@@ -20,6 +20,14 @@ namespace Zenject
         ProfileBlock()
         {
         }
+        
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStaticValues()
+        {
+            _instance = new ProfileBlock();
+            _nameCache.Clear();
+            _blockCount = 0;
+        }
 
         public static Thread UnityMainThread
         {

@@ -15,6 +15,9 @@ namespace Zenject
     {
         static Dictionary<string, TimerInfo> _timers = new Dictionary<string, TimerInfo>();
 
+#if UNITY_EDITOR
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+#endif
         public static void ResetAll()
         {
             foreach (var timer in _timers.Values)

@@ -170,6 +170,18 @@ namespace Zenject
             }
         }
 
+#if UNITY_EDITOR
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStaticValues()
+        {
+            PreInstall = null;
+            PostInstall = null;
+            PreResolve = null;
+            PostResolve = null;
+            _instance = null;
+        }
+#endif
+
         public bool ParentNewObjectsUnderContext
         {
             get { return _parentNewObjectsUnderContext; }

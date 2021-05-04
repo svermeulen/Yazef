@@ -103,6 +103,15 @@ namespace Zenject
             set { _parentNewObjectsUnderSceneContext = value; }
         }
 
+#if UNITY_EDITOR
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStaticValues()
+        {
+            ExtraBindingsInstallMethod = null;
+            ParentContainers = null;
+            ExtraBindingsLateInstallMethod = null;
+        }
+#endif
         public void Awake()
         {
 #if ZEN_INTERNAL_PROFILING

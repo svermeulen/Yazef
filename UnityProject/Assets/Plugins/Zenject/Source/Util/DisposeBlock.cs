@@ -12,6 +12,14 @@ namespace Zenject
 
         List<IDisposable> _disposables;
         List<SpawnedObjectPoolPair> _objectPoolPairs;
+        
+#if UNITY_EDITOR
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStaticValues()
+        {
+            _pool.Clear();
+        }
+#endif
 
         static void OnSpawned(DisposeBlock that)
         {

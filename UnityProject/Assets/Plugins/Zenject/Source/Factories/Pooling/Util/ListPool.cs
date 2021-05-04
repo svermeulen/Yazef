@@ -10,6 +10,14 @@ namespace Zenject
         {
             OnDespawnedMethod = OnDespawned;
         }
+        
+#if UNITY_EDITOR
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStaticValues()
+        {
+            _instance.Clear();
+        }
+#endif
 
         public static ListPool<T> Instance
         {

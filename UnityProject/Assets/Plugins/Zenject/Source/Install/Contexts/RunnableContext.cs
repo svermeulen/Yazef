@@ -1,7 +1,7 @@
 ﻿using ModestTree;
-using UnityEngine;
 
 #if !NOT_UNITY3D
+using UnityEngine;
 
 namespace Zenject
 {
@@ -13,6 +13,14 @@ namespace Zenject
 
         static bool _staticAutoRun = true;
 
+#if UNITY_EDITOR
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStaticValues()
+        {
+            _staticAutoRun = true;
+        }
+#endif
+        
         public bool Initialized { get; private set; }
 
         protected void Initialize()

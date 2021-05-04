@@ -17,6 +17,14 @@ namespace Zenject
         {
             get { return _instance; }
         }
+        
+#if UNITY_EDITOR
+        [UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetStaticValues()
+        {
+            _instance.Clear();
+        }
+#endif
 
         static void OnSpawned(HashSet<T> items)
         {
