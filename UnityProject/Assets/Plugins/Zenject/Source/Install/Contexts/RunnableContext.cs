@@ -23,7 +23,7 @@ namespace Zenject
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStaticValues()
         {
-            if (!UnityEditor.EditorSettings.enterPlayModeOptionsEnabled)
+            if (!EditorSettings.enterPlayModeOptionsEnabled)
             {
                 return;
             }
@@ -32,17 +32,14 @@ namespace Zenject
         }
 #endif
 
-        protected override void Awake()
-        {
-            base.Awake();
-            
 #if UNITY_EDITOR
-            if (EditorSettings.enterPlayModeOptionsEnabled && (EditorSettings.enterPlayModeOptions & EnterPlayModeOptions.DisableSceneReload) != 0)
-            {
-                Initialized = false;
-            }
-#endif
+        protected override void ResetInstanceFields()
+        {
+            base.ResetInstanceFields();
+            
+            Initialized = false;
         }
+#endif
 
         protected void Initialize()
         {

@@ -7,10 +7,6 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject.Internal;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace Zenject
 {
     public class SceneDecoratorContext : Context
@@ -84,16 +80,6 @@ namespace Zenject
 
         public void Initialize(DiContainer container)
         {
-#if UNITY_EDITOR
-            // When Scene Reloading is disabled in Enter The Play Mode settings, we need to reset all non-serialized fields
-            // https://docs.unity3d.com/Manual/SceneReloading.html
-            if (EditorSettings.enterPlayModeOptionsEnabled && (EditorSettings.enterPlayModeOptions & EnterPlayModeOptions.DisableSceneReload) != 0)
-            {
-                _injectableMonoBehaviours.Clear();
-                _container = null;
-            }
-#endif
-            
             Assert.IsNull(_container);
             Assert.That(_injectableMonoBehaviours.IsEmpty());
 
@@ -106,6 +92,16 @@ namespace Zenject
                 container.QueueForInject(instance);
             }
         }
+
+#if UNITY_EDITOR
+        protected override void ResetInstanceFields()
+        {
+            base.ResetInstanceFields();
+            
+            _injectableMonoBehaviours.Clear();
+            _container = null;
+        }
+#endif
 
         public void InstallDecoratorSceneBindings()
         {
