@@ -31,6 +31,7 @@ namespace Zenject.Internal
 #endif
         static void ResetStaticValues()
         {
+            // This gets called from static constructor so we won't check if enter the playmode option is enabled or not
             _injectAttributeTypes.Clear();
             _injectAttributeTypes.Add(typeof(InjectAttributeBase));
             ConstructorChoiceStrategy = ConstructorChoiceStrategy.InjectAttributeThenLeastArguments;

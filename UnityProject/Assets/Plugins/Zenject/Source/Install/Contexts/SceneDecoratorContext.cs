@@ -80,6 +80,16 @@ namespace Zenject
 
         public void Initialize(DiContainer container)
         {
+#if UNITY_EDITOR
+            // When Scene Reloading is disabled in Enter The Play Mode settings, we need to reset all non-serialized fields
+            // https://docs.unity3d.com/Manual/SceneReloading.html
+            if ((UnityEditor.EditorSettings.enterPlayModeOptions & UnityEditor.EnterPlayModeOptions.DisableSceneReload) != 0)
+            {
+                _injectableMonoBehaviours.Clear();
+                _container = null;
+            }
+#endif
+            
             Assert.IsNull(_container);
             Assert.That(_injectableMonoBehaviours.IsEmpty());
 

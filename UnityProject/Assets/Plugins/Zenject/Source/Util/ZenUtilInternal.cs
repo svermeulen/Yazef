@@ -21,6 +21,11 @@ namespace Zenject.Internal
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStaticValues()
         {
+            if (!UnityEditor.EditorSettings.enterPlayModeOptionsEnabled)
+            {
+                return;
+            }
+            
             _disabledIndestructibleGameObject = null;
         }
 #endif

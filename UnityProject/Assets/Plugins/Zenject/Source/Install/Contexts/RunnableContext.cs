@@ -1,5 +1,5 @@
-﻿using ModestTree;
-
+﻿using System.ComponentModel;
+using ModestTree;
 #if !NOT_UNITY3D
 using UnityEngine;
 
@@ -13,16 +13,33 @@ namespace Zenject
 
         static bool _staticAutoRun = true;
 
+        public bool Initialized { get; private set; }
+        
 #if UNITY_EDITOR
         // Required for disabling domain reload in enter the play mode feature. See: https://docs.unity3d.com/Manual/DomainReloading.html
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStaticValues()
         {
+            if (!UnityEditor.EditorSettings.enterPlayModeOptionsEnabled)
+            {
+                return;
+            }
+            
             _staticAutoRun = true;
         }
 #endif
-        
-        public bool Initialized { get; private set; }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            
+#if UNITY_EDITOR
+            if ((UnityEditor.EditorSettings.enterPlayModeOptions & UnityEditor.EnterPlayModeOptions.DisableSceneReload) != 0)
+            {
+                Initialized = false;
+            }
+#endif
+        }
 
         protected void Initialize()
         {

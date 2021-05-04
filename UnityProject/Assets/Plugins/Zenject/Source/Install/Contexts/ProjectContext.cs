@@ -175,6 +175,11 @@ namespace Zenject
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStaticValues()
         {
+            if (!UnityEditor.EditorSettings.enterPlayModeOptionsEnabled)
+            {
+                return;
+            }
+            
             PreInstall = null;
             PostInstall = null;
             PreResolve = null;

@@ -108,13 +108,35 @@ namespace Zenject
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStaticValues()
         {
+            if (!UnityEditor.EditorSettings.enterPlayModeOptionsEnabled)
+            {
+                return;
+            }
+            
             ExtraBindingsInstallMethod = null;
             ParentContainers = null;
             ExtraBindingsLateInstallMethod = null;
         }
 #endif
-        public void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+#if UNITY_EDITOR
+            // When Scene Reloading is disabled in Enter The Play Mode settings, we need to reset all non-serialized fields
+            // https://docs.unity3d.com/Manual/SceneReloading.html
+            if ((UnityEditor.EditorSettings.enterPlayModeOptions & UnityEditor.EnterPlayModeOptions.DisableSceneReload) != 0)
+            {
+                _container = null;
+                _decoratorContexts.Clear();
+                _hasInstalled = false;
+                _hasResolved = false;
+                PreInstall = null;
+                PostInstall = null;
+                PreResolve = null;
+                PostResolve = null;
+            }
+#endif
+            
 #if ZEN_INTERNAL_PROFILING
             ProfileTimers.ResetAll();
             using (ProfileTimers.CreateTimedBlock("Other"))
