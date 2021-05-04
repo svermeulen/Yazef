@@ -40,6 +40,9 @@ namespace Zenject.ReflectionBaking
 
         static void TryWeaveAssembly(string assemblyAssetPath)
         {
+            if (string.IsNullOrEmpty(assemblyAssetPath))
+                return;
+            
             var settings = ReflectionBakingInternalUtil.TryGetEnabledSettingsInstance();
 
             if (settings == null)
