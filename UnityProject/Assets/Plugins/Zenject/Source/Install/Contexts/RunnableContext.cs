@@ -14,6 +14,7 @@ namespace Zenject
         static bool _staticAutoRun = true;
 
 #if UNITY_EDITOR
+        // Required for disabling domain reload in enter the play mode feature. See: https://docs.unity3d.com/Manual/DomainReloading.html
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetStaticValues()
         {
