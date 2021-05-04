@@ -46,13 +46,15 @@ namespace Zenject.ReflectionBaking
             {
                 return;
             }
+            
+            var assemblyName = Path.GetFileNameWithoutExtension(assemblyAssetPath);
 
-            if (settings.AllGeneratedAssemblies && settings.ExcludeAssemblies.Contains(assemblyAssetPath))
+            if (settings.AllGeneratedAssemblies && settings.ExcludeAssemblies.Select(Path.GetFileNameWithoutExtension).Contains(assemblyName))
             {
                 return;
             }
 
-            if (!settings.AllGeneratedAssemblies && !settings.IncludeAssemblies.Contains(assemblyAssetPath))
+            if (!settings.AllGeneratedAssemblies && !settings.IncludeAssemblies.Select(Path.GetFileNameWithoutExtension).Contains(assemblyName))
             {
                 return;
             }
@@ -80,7 +82,6 @@ namespace Zenject.ReflectionBaking
                 return;
             }
 
-            var assemblyName = Path.GetFileNameWithoutExtension(assemblyAssetPath);
             var assembly = AppDomain.CurrentDomain.GetAssemblies()
                 .Where(x => x.GetName().Name == assemblyName).OnlyOrDefault();
 
