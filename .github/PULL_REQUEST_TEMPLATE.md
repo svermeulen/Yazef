@@ -1,4 +1,4 @@
-Thank you for sending a pull request! Please make sure you read the [contribution guidelines](https://github.com/svermeulen/Extenject/blob/master/CONTRIBUTING.md)
+Thank you for sending a pull request! Please make sure you read the [contribution guidelines](https://github.com/Mathijs-Bakker/Extenject/blob/master/CONTRIBUTING.md)
 
 ## Pull request checklist
 
@@ -25,7 +25,7 @@ Please check the type of change your PR introduces:
 <!-- Referencing an issue makes the creation of CHANGELOGS for new releases much easier -->
 Issue Number: N/A
 
-*Create or search an issue here: [Extenject/Issues](https://github.com/svermeulen/Extenject/issues)*
+*Create or search an issue here: [Extenject/Issues](https://github.com/Mathijs-Bakker/Extenject/issues)*
 
 ## What is the current behavior?
 <!-- Please describe the current behavior that you are modifying, or link to a relevant issue. -->
