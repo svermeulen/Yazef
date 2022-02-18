@@ -291,6 +291,7 @@ namespace Zenject
                 _container.QueueForInject(instance);
             }
 
+#if UNITY_2021_2_OR_NEWER
             List<GameObject> rootObjectsInScene = new List<GameObject>();
             gameObject.scene.GetRootGameObjects(rootObjectsInScene);
             for (int i = 0; i < rootObjectsInScene.Count; i++)
@@ -301,6 +302,7 @@ namespace Zenject
                     uiDocuments[j].rootVisualElement.Query().ForEach(x => _container.QueueForInject(x));
                 }
             }
+#endif
 
             foreach (var decoratorContext in _decoratorContexts)
             {
