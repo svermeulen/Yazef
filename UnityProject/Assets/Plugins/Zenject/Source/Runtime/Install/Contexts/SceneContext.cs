@@ -291,7 +291,7 @@ namespace Zenject
                 _container.QueueForInject(instance);
             }
 
-#if UNITY_2021_2_OR_NEWER
+#if USE_UI_ELEMENTS
             List<GameObject> rootObjectsInScene = new List<GameObject>();
             gameObject.scene.GetRootGameObjects(rootObjectsInScene);
             for (int i = 0; i < rootObjectsInScene.Count; i++)

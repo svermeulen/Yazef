@@ -8,6 +8,17 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.uielements",
+            "expression": "1.0.0",
+            "define": "USE_UI_ELEMENTS"
+        },
+        {
+            "name": "com.unity.ui",
+            "expression": "1.0.0",
+            "define": "USE_UI_ELEMENTS"
+        }
+    ],
     "noEngineReferences": false
 }
