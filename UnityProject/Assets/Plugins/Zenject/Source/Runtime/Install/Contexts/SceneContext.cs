@@ -291,7 +291,10 @@ namespace Zenject
                 _container.QueueForInject(instance);
             }
 
-#if USE_UI_ELEMENTS
+            // UIDocument is defined in the UI Elements package. In Unity 2021.1 the package was deprecated
+            // in favor of including it in the UI Elements module. Earlier Unity versions already had that
+            // module, but it does not include UIDocument.
+#if USE_UI_ELEMENTS_PACKAGE || (USE_UI_ELEMENTS_MODULE && UNITY_2021_1_OR_NEWER)
             List<GameObject> rootObjectsInScene = new List<GameObject>();
             gameObject.scene.GetRootGameObjects(rootObjectsInScene);
             for (int i = 0; i < rootObjectsInScene.Count; i++)
