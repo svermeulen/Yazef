@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using ModestTree;
 using Zenject.Internal;
@@ -79,7 +80,10 @@ namespace Zenject.ReflectionBaking
                 {
                     Log.Warn("Could not find actual type for type '{0}', skipping", typeDef.FullName);
                     continue;
-                }
+                } 
+                
+                if (actualType.HasAttribute<CompilerGeneratedAttribute>())
+                    continue;
 
                 if (TryEditType(typeDef, actualType))
                 {
