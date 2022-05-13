@@ -6,6 +6,7 @@ using System.Linq;
 using ModestTree;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Zenject.Internal;
 #if UNITY_EDITOR
 using UnityEditor;
 
@@ -22,6 +23,9 @@ namespace Zenject
         List<MonoInstaller> _monoInstallers = new List<MonoInstaller>();
 
         [SerializeField] List<MonoInstaller> _installerPrefabs = new List<MonoInstaller>();
+
+        [Tooltip("If checked, this context will automatically get all MonoInstallers attached to the current gameObject by calling GetComponents. This is useful for when you are using Prefab Variants and you cannot easily modify the list of installers.")] [SerializeField]
+        bool _findSiblingMonoInstallers;
 
         List<InstallerBase> _normalInstallers = new List<InstallerBase>();
         List<Type> _normalInstallerTypes = new List<Type>();
@@ -162,6 +166,26 @@ namespace Zenject
 
         protected void InstallInstallers()
         {
+            if (_findSiblingMonoInstallers)
+            {
+                List<MonoInstaller> siblingInstallers = ZenPools.SpawnList<MonoInstaller>();
+
+                try
+                {
+                    GetComponents(siblingInstallers);
+
+                    foreach (MonoInstaller m in siblingInstallers)
+                    {
+                        if (!_monoInstallers.Contains(m))
+                            _monoInstallers.Add(m);
+                    }
+                }
+                finally
+                {
+                    ZenPools.DespawnList(siblingInstallers);
+                }
+            }
+
             InstallInstallers(
                 _normalInstallers, _normalInstallerTypes, _scriptableObjectInstallers, _monoInstallers,
                 _installerPrefabs);
