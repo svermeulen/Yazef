@@ -34,9 +34,20 @@ namespace Zenject.Internal
         // expected
         // In those cases you can use this function which will also
         // work with non-unity objects
-        public static bool IsNull(System.Object obj)
+        public static bool IsNull(object obj)
         {
-            return obj == null || obj.Equals(null);
+            if (obj == null || obj.Equals(null))
+                return true;
+            
+#if !NOT_UNITY3D
+            // This is very weird but sometimes when you check a component's value to see if it's null or not,
+            // the component's null check shows the component is valid but the object is actually destroyed/invalid.
+            // So as an additional measure we check for the gameObject as well.
+            if (obj is Component c)
+                return c.gameObject == null;
+#endif
+
+            return false;
         }
 
 #if UNITY_EDITOR

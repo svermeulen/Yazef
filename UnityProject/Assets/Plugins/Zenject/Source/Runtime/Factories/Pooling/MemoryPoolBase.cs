@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
@@ -192,13 +193,25 @@ namespace Zenject
 
         protected TContract GetInternal()
         {
-            if (_inactiveItems.Count == 0)
+            TContract item = default;
+            
+            // Make sure we don't ever try to spawn a null item.
+            // Most of the times this loop will only run once. 
+            // But sometimes the items in the pool get destroyed by the user or by Unity.
+            // In that case, our inactiveItems stack will contain invalid/null references.
+            // For example, during scene change, items are valid during OnDestroy call and can be returned to the pool,
+            // but the items will be destroyed by Unity right after the scene changes.
+            while (ZenUtilInternal.IsNull(item))
             {
-                ExpandPool();
-                Assert.That(!_inactiveItems.IsEmpty());
+                if (_inactiveItems.Count == 0)
+                {
+                    ExpandPool();
+                    Assert.That(!_inactiveItems.IsEmpty());
+                }
+
+                item = _inactiveItems.Pop();
             }
 
-            var item = _inactiveItems.Pop();
             _activeCount++;
             OnSpawned(item);
             return item;
