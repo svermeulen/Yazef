@@ -59,12 +59,24 @@ namespace Zenject
 
                 return _instance;
             }
+            set
+            {
+                Assert.IsNull(_instance, "ProjectContext already has an instance. Cannot replace ProjectContext after one is created.");
+                Assert.IsNotNull(value);
+                _instance = value;
+            }
         }
 
         public static bool ValidateOnNextRun
         {
             get;
             set;
+        }
+        
+        public ZenjectSettings Settings
+        {
+            get => _settings;
+            set => _settings = value;
         }
 
         public override IEnumerable<GameObject> GetRootGameObjects()
@@ -214,7 +226,7 @@ namespace Zenject
             }
         }
 
-        void Initialize()
+        public void Initialize()
         {
             // Do this as early as possible before any type analysis occurs
             ReflectionTypeAnalyzer.ConstructorChoiceStrategy = _settings.ConstructorChoiceStrategy;
