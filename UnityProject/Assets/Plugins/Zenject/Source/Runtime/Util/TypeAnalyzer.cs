@@ -232,8 +232,12 @@ namespace Zenject
         public static bool ShouldSkipTypeAnalysis(Type type)
         {
             return type == null || type.IsEnum() || type.IsArray || type.IsInterface()
-                || type.ContainsGenericParameters() || IsStaticType(type)
-                || type == typeof(object);
+                   || type.ContainsGenericParameters() || IsStaticType(type)
+                   || type == typeof(object)
+#if !NOT_UNITY3D
+                   || (type.Namespace != null && type.Namespace.Contains("UnityEngine"))
+#endif
+                ;
         }
 
         static bool IsStaticType(Type type)
