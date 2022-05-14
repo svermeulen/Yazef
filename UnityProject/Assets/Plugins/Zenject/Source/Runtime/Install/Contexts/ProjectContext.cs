@@ -76,7 +76,11 @@ namespace Zenject
         public ZenjectSettings Settings
         {
             get => _settings;
-            set => _settings = value;
+            set
+            {
+                Assert.IsNull(_container, "You cannot change settings after ProjectContext initialization.");
+                _settings = value;
+            }
         }
 
         public override IEnumerable<GameObject> GetRootGameObjects()
@@ -228,11 +232,11 @@ namespace Zenject
 
         public void Initialize()
         {
+            Assert.IsNull(_container);
+            
             // Do this as early as possible before any type analysis occurs
             ReflectionTypeAnalyzer.ConstructorChoiceStrategy = _settings.ConstructorChoiceStrategy;
-
-            Assert.IsNull(_container);
-
+            
             if (Application.isEditor)
             {
                 TypeAnalyzer.ReflectionBakingCoverageMode = _editorReflectionBakingCoverageMode;
