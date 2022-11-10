@@ -12,7 +12,9 @@ namespace Zenject.Internal
             get
             {
                 if (unitTestRunnerGameObjectName != null)
+                {
                     return unitTestRunnerGameObjectName;
+                }
 
                 // Unity Test Framework version 1.x and 2.x use different names
                 // for the test runner. Since there is no way of knowing which
@@ -20,7 +22,9 @@ namespace Zenject.Internal
                 // both versions the first time.
                 var testRunner = GameObject.Find("Code-based tests runner"); // v1
                 if (testRunner == null)
+                {
                     testRunner = GameObject.Find("tests runner"); // v2
+                }
 
                 unitTestRunnerGameObjectName = testRunner?.name;
                 return unitTestRunnerGameObjectName;
