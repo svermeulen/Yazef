@@ -6,7 +6,26 @@ namespace Zenject.Internal
 {
     public static class ZenjectTestUtil
     {
-        public const string UnitTestRunnerGameObjectName = "Code-based tests runner";
+        static string unitTestRunnerGameObjectName;
+        public static string UnitTestRunnerGameObjectName
+        {
+            get
+            {
+                if (unitTestRunnerGameObjectName != null)
+                    return unitTestRunnerGameObjectName;
+
+                // Unity Test Framework version 1.x and 2.x use different names
+                // for the test runner. Since there is no way of knowing which
+                // version that's used at compile time we have to brute force
+                // both versions the first time.
+                var testRunner = GameObject.Find("Code-based tests runner"); // v1
+                if (testRunner == null)
+                    testRunner = GameObject.Find("tests runner"); // v2
+
+                unitTestRunnerGameObjectName = testRunner?.name;
+                return unitTestRunnerGameObjectName;
+            }
+        }
 
         public static void DestroyEverythingExceptTestRunner(bool immediate)
         {
@@ -20,7 +39,10 @@ namespace Zenject.Internal
             {
                 foreach (var obj in SceneManager.GetSceneAt(i).GetRootGameObjects())
                 {
-                    GameObject.DestroyImmediate(obj);
+                    if (obj.name != UnitTestRunnerGameObjectName)
+                    {
+                        GameObject.DestroyImmediate(obj);
+                    }
                 }
             }
 
