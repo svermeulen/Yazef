@@ -20,13 +20,10 @@ namespace Zenject.Internal
                 // for the test runner. Since there is no way of knowing which
                 // version that's used at compile time we have to brute force
                 // both versions the first time.
-                var testRunner = GameObject.Find("Code-based tests runner"); // v1
-                if (testRunner == null)
-                {
-                    testRunner = GameObject.Find("tests runner"); // v2
-                }
+                unitTestRunnerGameObjectName =
+                    GameObject.Find("Code-based tests runner")?.name ?? // v1
+                    GameObject.Find("tests runner")?.name;              // v2
 
-                unitTestRunnerGameObjectName = testRunner?.name;
                 return unitTestRunnerGameObjectName;
             }
         }
