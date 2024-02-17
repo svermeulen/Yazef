@@ -9,7 +9,7 @@
 
 ## Dependency Injection Framework for Unity Game Engine
 
-This project is a fork of [Zenject](https://github.com/modesttree/zenject) / [Extenject](https://github.com/Mathijs-Bakker/Extenject) with the goal of being actively maintained.  It is named Yazef (shorthand for **Y**et **A**nother **ZE**nject **F**ork) to respect Modest Tree's trademarks on the names Zenject and Extenject.
+This project is a fork of [Zenject](https://github.com/modesttree/zenject) / [Extenject](https://github.com/Mathijs-Bakker/Extenject) with the goal of being actively maintained
 
 ## 2024 Update
 
@@ -3139,6 +3139,10 @@ It is possible to remove or replace bindings that were added in a previous bind 
 1.  **DiContainer.GetDependencyContracts** - Returns a list of all the types that the given type depends on.  This might be useful, for example, if you wanted to do some static analysis of your project, or if you wanted to automatically generate a dependency diagram, etc.
 
 ## Frequently Asked Questions
+
+### Why a new name?
+
+It is named Yazef (shorthand for **Y**et **A**nother **ZE**nject **F**ork) to respect Modest Tree's trademarks on the names Zenject and Extenject
 
 ### Isn't this overkill?  I mean, is using statically accessible singletons really that bad?
 
