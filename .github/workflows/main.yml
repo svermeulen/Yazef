@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Windows-Build
-          path: UnityProject/build/StandaloneWindows64/
+          path: build/StandaloneWindows64/
 
   android_build:
     needs: unity_test
@@ -62,7 +62,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Android-Build
-          path: UnityProject/build/Android/
+          path: build/Android/
 
   webgl_build:
     needs: unity_test
@@ -83,7 +83,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: WebGL-Build
-          path: UnityProject/build/WebGL/
+          path: build/WebGL/
 
   ios_build:
     needs: unity_test
@@ -104,5 +104,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: iOS-Build
-          path: UnityProject/build/iOS/
+          path: build/iOS/
 
