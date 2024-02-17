@@ -9,7 +9,7 @@
 
 ## Dependency Injection Framework for Unity Game Engine
 
-This project is a fork of [Zenject / Extenject](https://github.com/modesttree/zenject) with the goal of being actively maintained.
+This project is a fork of [Zenject](https://github.com/modesttree/zenject) / [Extenject](https://github.com/Mathijs-Bakker/Extenject) with the goal of being actively maintained.
 
 ## 2024 Update
 
