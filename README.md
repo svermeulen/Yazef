@@ -5,7 +5,9 @@
 [![CI](https://github.com/svermeulen/Yazef/actions/workflows/main.yml/badge.svg)](https://github.com/svermeulen/Yazef/actions/workflows/main.yml)
 ![GitHub](https://img.shields.io/github/license/svermeulen/Yazef)
 
-# Yazef: Yet Another Zenject Fork
+# Yazef
+
+## **Y**et **A**nother **ZE**nject **F**ork
 
 This project is a fork of [Zenject](https://github.com/modesttree/zenject) with the goal of being actively maintained.
 
