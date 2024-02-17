@@ -137,6 +137,8 @@ namespace Zenject.Internal
 
         public static void DespawnLookupId(LookupId lookupId)
         {
+            lookupId.BindingId = default;
+            lookupId.Provider = null;
             lookupId.Reset();
             _lookupIdPool.Despawn(lookupId);
         }
