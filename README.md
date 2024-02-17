@@ -1,4 +1,3 @@
-
 [![Gitter](https://img.shields.io/static/v1?label=Gitter&labelColor=ED1965&message=Support&color=grey&logo=Gitter&logoColor=White&url=https://gitter.im/Extenject/community)](https://gitter.im/Extenject/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/svermeulen/Yazef?color=green)](https://github.com/svermeulen/Yazef/releases)
 ![GitHub contributors](https://img.shields.io/github/contributors/svermeulen/Yazef)
