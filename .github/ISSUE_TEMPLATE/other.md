@@ -13,6 +13,8 @@ assignees: ''
 * [Extenject community on Gitter](https://gitter.im/Extenject/community) (Official)
 * [Infallible Code's Discord](https://discord.gg/T5y5TD) (has an #Extenject-Zenject channel)
 
+<!-- markdown-link-check-disable -->
 :snail: **Websites/forums:**
 * [StackOverflow](https://stackoverflow.com/questions/tagged/zenject)
 * [Unity Forums](https://forum.unity.com/threads/zenject-dependency-injection-framework-for-unity.201184/)
+<!-- markdown-link-check-enable -->

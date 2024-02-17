@@ -34,8 +34,8 @@ The following is a set of guidelines for contributing to Yazef and its packages,
 * [Infallible Code's Discord](https://discord.gg/T5y5TD) (has an #Extenject-Zenject channel)
 
 :snail: **Websites/forums:**
-* [StackOverflow](https://stackoverflow.com/questions/tagged/zenject)
-* [Unity Forums](https://forum.unity.com)
+* <!-- markdown-link-check-disable -->[StackOverflow](https://stackoverflow.com/questions/tagged/zenject)<!-- markdown-link-check-enable -->
+* <!-- markdown-link-check-disable -->[Unity Forums](https://forum.unity.com)<!-- markdown-link-check-enable -->
 
 ## How Can I Contribute?
 
@@ -138,7 +138,7 @@ Start reading our code and you'll get the hang of it. We optimize for readabilit
 * **Curly Braces { }**
     Always use braces even for one line if's. Unity did this everywhere, and there is value in not accidentally missing a line in an if statement because there were no braces.
 * **Naming**
-    Follow [C# standard naming conventions](https://github.com/ktaranov/naming-convention/blob/master/C%23%20Coding%20Standards%20and%20Naming%20Conventions.md). Also, be descriptive. \`NetworkIdentity identity\`, not \`NetworkIdentity uv\` or similar. If you need a comment to explain it, the name needs to be changed. For example, don't do `msg = ... // the message`, use `message = ...` without a comment instead. Avoid prefixes like `m_`, `s_`, or similar.
+    Follow <!-- markdown-link-check-disable -->[C# standard naming conventions](https://github.com/ktaranov/naming-convention/blob/master/C%23%20Coding%20Standards%20and%20Naming%20Conventions.md)<!-- markdown-link-check-enable -->. Also, be descriptive. \`NetworkIdentity identity\`, not \`NetworkIdentity uv\` or similar. If you need a comment to explain it, the name needs to be changed. For example, don't do `msg = ... // the message`, use `message = ...` without a comment instead. Avoid prefixes like `m_`, `s_`, or similar.
 * **private** 
     Fields and methods in a class are private by default, no need to use the private keyword there.
 * This is open source software. Consider the people who will read your code, and make it look nice for them. It's sort of like driving a car: Perhaps you love doing donuts when you're alone, but with passengers the goal is to make the ride as smooth as possible.
