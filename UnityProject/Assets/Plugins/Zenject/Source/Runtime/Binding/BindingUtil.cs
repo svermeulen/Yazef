@@ -1,26 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using ModestTree;
 using Zenject.Internal;
 using System.Linq;
-using TypeExtensions = ModestTree.TypeExtensions;
-
-#if !NOT_UNITY3D
+using TypeExtensions = Zenject.Internal.TypeExtensions;
 using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-#endif
-
 namespace Zenject
 {
     internal static class BindingUtil
     {
-#if !NOT_UNITY3D
-
 #if ZEN_STRIP_ASSERTS_IN_BUILDS
         [Conditional("UNITY_EDITOR")]
 #endif
@@ -212,23 +205,6 @@ namespace Zenject
             Assert.That(type.DerivesFrom(typeof(Component)),
                 "Invalid type given during bind command.  Expected type '{0}' to derive from UnityEngine.Component", type);
         }
-#else
-        public static void AssertTypesAreNotComponents(IEnumerable<Type> types)
-        {
-        }
-
-        public static void AssertIsNotComponent(Type type)
-        {
-        }
-
-        public static void AssertIsNotComponent<T>()
-        {
-        }
-
-        public static void AssertIsNotComponent(IEnumerable<Type> types)
-        {
-        }
-#endif
 
 #if ZEN_STRIP_ASSERTS_IN_BUILDS
         [Conditional("UNITY_EDITOR")]

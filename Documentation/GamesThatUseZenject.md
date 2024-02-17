@@ -1,4 +1,4 @@
-# Games and Libraries that use Zenject/Extenject
+# Games and Libraries that use Zenject/Extenject/Yazef
 
 If you know of other projects that are using Zenject, please add a comment [here](https://github.com/svermeulen/Extenject/issues/179) so that we can add it to this list.
 

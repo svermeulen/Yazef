@@ -1,13 +1,10 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class EmptyGameObjectProvider : IProvider
     {
         readonly DiContainer _container;
@@ -47,6 +44,4 @@ namespace Zenject
         }
     }
 }
-
-#endif
 

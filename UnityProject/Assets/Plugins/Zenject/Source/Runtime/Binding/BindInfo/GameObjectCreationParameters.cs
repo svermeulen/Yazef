@@ -1,11 +1,8 @@
-#if !NOT_UNITY3D
-
 using System;
 using UnityEngine;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class GameObjectCreationParameters
     {
         public string Name
@@ -89,5 +86,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

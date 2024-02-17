@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace ModestTree
+namespace Zenject.Internal
 {
     public static class ReflectionUtil
     {
@@ -103,7 +103,7 @@ namespace ModestTree
 #if NET_4_6 || NET_STANDARD_2_0
             Action<TParam1, TParam2, TParam3, TParam4, TParam5> action)
 #else
-            ModestTree.Util.Action<TParam1, TParam2, TParam3, TParam4, TParam5> action)
+            Zenject.Internal.Action<TParam1, TParam2, TParam3, TParam4, TParam5> action)
 #endif
         {
 #if UNITY_WSA && ENABLE_DOTNET && !UNITY_EDITOR
@@ -117,7 +117,7 @@ namespace ModestTree
 #if NET_4_6 || NET_STANDARD_2_0
             Action<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6> action)
 #else
-            ModestTree.Util.Action<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6> action)
+            Zenject.Internal.Action<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6> action)
 #endif
         {
 #if UNITY_WSA && ENABLE_DOTNET && !UNITY_EDITOR

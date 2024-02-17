@@ -1,13 +1,8 @@
 using System;
 using System.Collections.Generic;
-using ModestTree;
-using System.Linq;
-
-#if !NOT_UNITY3D
-using UnityEngine;
-#endif
-
 using Zenject.Internal;
+using System.Linq;
+using UnityEngine;
 
 namespace Zenject
 {
@@ -171,8 +166,6 @@ namespace Zenject
             binder.AddSecondaryCopyBindInfo(subBinder.BindInfo);
             return binder;
         }
-
-#if !NOT_UNITY3D
 
         public ScopeConcreteIdArgConditionCopyNonLazyBinder FromComponentsOn(GameObject gameObject)
         {
@@ -796,7 +789,6 @@ namespace Zenject
 
             return this;
         }
-#endif
 
         public ScopeConcreteIdArgConditionCopyNonLazyBinder FromMethodUntyped(Func<InjectContext, object> method)
         {

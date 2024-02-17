@@ -1,10 +1,9 @@
 using System;
 using System.Linq;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class ConditionCopyNonLazyBinder : CopyNonLazyBinder
     {
         public ConditionCopyNonLazyBinder(BindInfo bindInfo)

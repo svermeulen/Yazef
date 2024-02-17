@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class InstanceProvider : IProvider
     {
         readonly object _instance;

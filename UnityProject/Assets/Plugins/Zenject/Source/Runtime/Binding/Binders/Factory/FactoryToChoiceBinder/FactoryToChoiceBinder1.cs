@@ -1,8 +1,7 @@
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class FactoryToChoiceBinder<TParam1, TContract> : FactoryFromBinder<TParam1, TContract>
     {
         public FactoryToChoiceBinder(

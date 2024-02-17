@@ -1,6 +1,4 @@
-#if !NOT_UNITY3D
-
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 
 namespace Zenject
@@ -137,5 +135,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

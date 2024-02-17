@@ -1,10 +1,7 @@
-#if !NOT_UNITY3D
-
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class PrefabProvider : IPrefabProvider
     {
         readonly UnityEngine.Object _prefab;
@@ -21,7 +18,4 @@ namespace Zenject
         }
     }
 }
-
-#endif
-
 

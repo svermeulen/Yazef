@@ -1,14 +1,10 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using ModestTree;
 using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public abstract class SubContainerCreatorDynamicContext : ISubContainerCreator
     {
         readonly DiContainer _container;
@@ -58,5 +54,3 @@ namespace Zenject
         protected abstract GameObject CreateGameObject(InjectContext context, out bool shouldMakeActive);
     }
 }
-
-#endif

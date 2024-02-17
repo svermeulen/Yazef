@@ -1,9 +1,8 @@
 using System;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class SubContainerBinder
     {
         readonly BindInfo _bindInfo;
@@ -50,11 +49,7 @@ namespace Zenject
         }
 
         public
-#if NOT_UNITY3D
-            WithKernelScopeConcreteIdArgConditionCopyNonLazyBinder
-#else
             WithKernelDefaultParentScopeConcreteIdArgConditionCopyNonLazyBinder
-#endif
             ByInstaller<TInstaller>()
             where TInstaller : InstallerBase
         {
@@ -62,11 +57,7 @@ namespace Zenject
         }
 
         public
-#if NOT_UNITY3D
-            WithKernelScopeConcreteIdArgConditionCopyNonLazyBinder
-#else
             WithKernelDefaultParentScopeConcreteIdArgConditionCopyNonLazyBinder
-#endif
             ByInstaller(Type installerType)
         {
             Assert.That(installerType.DerivesFrom<InstallerBase>(),
@@ -79,20 +70,12 @@ namespace Zenject
                 (container) => new SubContainerCreatorByInstaller(container, subContainerBindInfo, installerType));
 
             return new
-#if NOT_UNITY3D
-                WithKernelScopeConcreteIdArgConditionCopyNonLazyBinder
-#else
                 WithKernelDefaultParentScopeConcreteIdArgConditionCopyNonLazyBinder
-#endif
                 (subContainerBindInfo, _bindInfo);
         }
 
         public
-#if NOT_UNITY3D
-            WithKernelScopeConcreteIdArgConditionCopyNonLazyBinder
-#else
             WithKernelDefaultParentScopeConcreteIdArgConditionCopyNonLazyBinder
-#endif
             ByMethod(Action<DiContainer> installerMethod)
         {
             var subContainerBindInfo = new SubContainerCreatorBindInfo();
@@ -102,15 +85,9 @@ namespace Zenject
                 (container) => new SubContainerCreatorByMethod(container, subContainerBindInfo, installerMethod));
 
             return new
-#if NOT_UNITY3D
-                WithKernelScopeConcreteIdArgConditionCopyNonLazyBinder
-#else
                 WithKernelDefaultParentScopeConcreteIdArgConditionCopyNonLazyBinder
-#endif
                 (subContainerBindInfo, _bindInfo);
         }
-
-#if !NOT_UNITY3D
 
         public NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder ByNewGameObjectMethod(
             Action<DiContainer> installerMethod)
@@ -311,6 +288,5 @@ namespace Zenject
 
             return new NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder(_bindInfo, gameObjectInfo);
         }
-#endif
     }
 }

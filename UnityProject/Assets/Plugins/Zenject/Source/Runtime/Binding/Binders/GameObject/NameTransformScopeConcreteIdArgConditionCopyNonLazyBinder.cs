@@ -1,8 +1,5 @@
-#if !NOT_UNITY3D
-
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder : TransformScopeConcreteIdArgConditionCopyNonLazyBinder
     {
         public NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder(
@@ -19,5 +16,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

@@ -1,5 +1,3 @@
-#if !NOT_UNITY3D
-
 using System;
 using UnityEngine;
 
@@ -28,6 +26,4 @@ namespace Zenject
         }
     }
 }
-
-#endif
 

@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ModestTree;
-using Assert=ModestTree.Assert;
+using Zenject.Internal;
 
 namespace Zenject.Tests
 {

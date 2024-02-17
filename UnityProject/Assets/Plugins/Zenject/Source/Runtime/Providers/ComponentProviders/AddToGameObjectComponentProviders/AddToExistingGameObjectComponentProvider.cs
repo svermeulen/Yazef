@@ -1,13 +1,10 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class AddToExistingGameObjectComponentProvider : AddToGameObjectComponentProviderBase
     {
         readonly GameObject _gameObject;
@@ -35,7 +32,6 @@ namespace Zenject
         }
     }
 
-    [NoReflectionBaking]
     public class AddToExistingGameObjectComponentProviderGetter : AddToGameObjectComponentProviderBase
     {
         readonly Func<InjectContext, GameObject> _gameObjectGetter;
@@ -65,5 +61,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

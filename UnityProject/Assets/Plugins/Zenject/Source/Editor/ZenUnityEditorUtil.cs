@@ -1,10 +1,8 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ModestTree;
+using Zenject.Internal;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -348,5 +346,3 @@ namespace Zenject.Internal
         }
     }
 }
-
-#endif

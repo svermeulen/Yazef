@@ -1,15 +1,22 @@
-![Extenject Header Image](Documentation/Images/ExtenjectMainHeader.png)
 
 [![Gitter](https://img.shields.io/static/v1?label=Gitter&labelColor=ED1965&message=Support&color=grey&logo=Gitter&logoColor=White&url=https://gitter.im/Extenject/community)](https://gitter.im/Extenject/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Mathijs-Bakker/Extenject?color=green)](https://github.com/Mathijs-Bakker/Extenject/releases)
-![GitHub contributors](https://img.shields.io/github/contributors/Mathijs-Bakker/Extenject)
-![GitHub last commit](https://img.shields.io/github/last-commit/Mathijs-Bakker/Extenject)
-[![CI](https://github.com/Mathijs-Bakker/Extenject/actions/workflows/main.yml/badge.svg)](https://github.com/Mathijs-Bakker/Extenject/actions/workflows/main.yml)
-![GitHub](https://img.shields.io/github/license/Mathijs-Bakker/Extenject)
+![GitHub contributors](https://img.shields.io/github/contributors/svermeulen/Yazef)
+![GitHub last commit](https://img.shields.io/github/last-commit/svermeulen/Yazef)
+[![CI](https://github.com/svermeulen/Yazef/actions/workflows/main.yml/badge.svg)](https://github.com/svermeulen/Yazef/actions/workflows/main.yml)
+![GitHub](https://img.shields.io/github/license/svermeulen/Yazef)
 
-# Extenject: extensions, bug fixes and updates for Zenject 
+# Yazef: Yet Another Zenject Fork
 
 This project is a fork of [Zenject](https://github.com/modesttree/zenject) with the goal of being actively maintained.
+
+## 2024 Update
+
+I am the original author of Zenject.  For various reasons, I stopped maintaining it in 2020.  4 years later I am back and currently maintaining this version.
+
+This version is a slightly stripped down version, which means a number of features of Zenject have been removed, in an effort to make it simpler, less bloated, and more maintainable.  If you have previously been using other zenject versions then you will want to review these changes [here](#yazef-vs-zenject).
+
+Also - note that this library is not as performant as [VContainer](https://github.com/hadashiA/VContainer) so you may want to consider using that instead.
 
 ## Table Of Contents
 
@@ -58,7 +65,6 @@ This project is a fork of [Zenject](https://github.com/modesttree/zenject) with 
   - [Composite Installers](#composite-installers)
   - [Using Zenject Outside Unity Or For DLLs](#using-zenject-outside-unity-or-for-dlls)
   - [Zenject Settings](#zenject-settings)
-  - [Signals](#signals)
   - [Factories: Creating Objects Dynamically](#factories-creating-objects-dynamically)
   - [Memory Pools](#memory-pools)
   - [Update / Initialization Order](#update--initialization-order)
@@ -75,13 +81,9 @@ This project is a fork of [Zenject](https://github.com/modesttree/zenject) with 
   - [Open Generic Types](#open-generic-types)
   - [Notes About Destruction/Dispose Order](#notes-about-destructiondispose-order)
   - [UniRx Integration](#unirx-integration)
-  - [Auto-Mocking using Moq](#auto-mocking-using-moq)
   - [Creating Unity EditorWindow's with Zenject](#creating-unity-editorwindows-with-zenject)
   - [Optimization Recommendations/Notes](#optimization-recommendationsnotes)
-  - [Reflection Baking](#reflection-baking)
-    - [Baking External DLLs](#baking-external-dlls)
-    - [Under the hood](#under-the-hood)
-    - [Coverage Settings](#coverage-settings)
+  - [Yazef vs Zenject](#yazef-vs-zenject)
   - [Upgrade Guide for Zenject 6](#upgrade-guide-for-zenject-6)
   - [DiContainer Methods](#dicontainer-methods)
     - [DiContainer.Instantiate](#dicontainerinstantiate)
@@ -111,7 +113,7 @@ This project is a fork of [Zenject](https://github.com/modesttree/zenject) with 
 
 ## Introduction
 
-Note that if you are looking for the older documentation for Zenject you can find that here:  [Zenject 3.x](https://github.com/svermeulen/Extenject/tree/f0dd30ad451dcbc3eb17e636455a6c89b14ad537), [Zenject 4.x](https://github.com/svermeulen/Extenject/tree/0b4a15b1e6e680c94fd34a2d7420eb41e320b21b) and [Zenject 5.x](https://github.com/svermeulen/Extenject/tree/dc019e31dbae09eb53c1638be00f7f002898956c)
+Note that if you are looking for the older documentation for Zenject you can find that here:  [Zenject 3.x](https://github.com/svermeulen/Yazef/tree/f0dd30ad451dcbc3eb17e636455a6c89b14ad537), [Zenject 4.x](https://github.com/svermeulen/Extenject/tree/0b4a15b1e6e680c94fd34a2d7420eb41e320b21b) and [Zenject 5.x](https://github.com/svermeulen/Yazef/tree/dc019e31dbae09eb53c1638be00f7f002898956c)
 
 Zenject is a lightweight highly performant dependency injection framework built specifically to target Unity 3D (however it can be used outside of Unity as well).  It can be used to turn your application into a collection of loosely coupled parts with highly segmented responsibilities.  Zenject can then glue the parts together in many different configurations to allow you to easily write, re-use, refactor and test your code in a scalable and extremely flexible way.
 
@@ -129,7 +131,7 @@ This project is open source.
 
 For general troubleshooting / support, please post to [stack overflow](https://stackoverflow.com/questions/ask) using the tag 'zenject', or post in the [zenject google group](https://groups.google.com/forum/#!forum/zenject/)
 
-Or, if you have found a bug, you are also welcome to create an issue on the [github page](https://github.com/Mathijs-Bakker/Extenject), or a pull request if you have a fix / extension.  There is also a [gitter chat](https://gitter.im/Extenject/community) that you can join for real time discussion.
+Or, if you have found a bug, you are also welcome to create an issue on the [github page](https://github.com/svermeulen/Yazef), or a pull request if you have a fix / extension.
 
 ## Features
 
@@ -148,26 +150,23 @@ Or, if you have found a bug, you are also welcome to create an issue on the [git
 * Support for global, project-wide bindings to add dependencies for all scenes
 * Convention based binding, based on class name, namespace, or any other criteria
 * Ability to validate object graphs at editor time (including dynamic object graphs created via factories)
-* Automatic binding on components in the scene using the `ZenjectBinding` component
-* Auto-Mocking using the Moq library
 * Built-in support for memory pools
 * Support for decorator pattern using decorator bindings
 * Support for automatically mapping open generic types
 * Built in support for unit test, integration tests, and scene tests
 * Just-in-time injection using the LazyInject<> construct
 * Support for multiple threads for resolving/instantiating
-* Support for 'reflection baking' to eliminate costly reflection operations completely by directly modifying the generated assemblies
 * Automatic injection of game objects using ZenAutoInjecter component
 
-## Installation ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Mathijs-Bakker/Extenject?color=green)
+## Installation ![GitHub release (latest by date)](https://img.shields.io/github/v/release/svermeulen/Yazef?color=green)
 
-[![GitHub releases](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub%20Releases&labelColor=181717&message=Downloads&color=green&logo=GitHub&logoColor=white)](https://github.com/Mathijs-Bakker/Extenject/releases)
+[![GitHub releases](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub%20Releases&labelColor=181717&message=Downloads&color=green&logo=GitHub&logoColor=white)](https://github.com/svermeulen/Yazef/releases)
 [![Unity](https://img.shields.io/static/v1?style=for-the-badge&label=Unity%20Asset%20Store&labelColor=181717&message=Download&color=green&logo=Unity&logoColor=white)](https://assetstore.unity.com/packages/tools/utilities/extenject-dependency-injection-ioc-157735)
-[![Unity Package](https://img.shields.io/static/v1?style=for-the-badge&label=Unity%20Package&labelColor=181717&message=UPM&color=green&logo=Unity&logoColor=white)](https://github.com/Mathijs-Bakker/Extenject/issues/2)
+[![Unity Package](https://img.shields.io/static/v1?style=for-the-badge&label=Unity%20Package&labelColor=181717&message=UPM&color=green&logo=Unity&logoColor=white)](https://github.com/svermeulen/Yazef/issues/2)
 
 You can install Zenject using any of the following methods
 
-1.  __From [Releases Page](https://github.com/Mathijs-Bakker/Extenject/releases)__
+1.  __From [Releases Page](https://github.com/svermeulen/Yazef/releases)__
     Here you can choose between the following:
 
     * **Zenject-WithAsteroidsDemo.vX.X.unitypackage** - This is equivalent to what you find in the Asset Store and contains both sample games "Asteroids" and "SpaceFighter" as part of the package.  All the source code for Zenject is included here.
@@ -177,7 +176,7 @@ You can install Zenject using any of the following methods
 
 1.  __From the [Unity Asset Store](https://assetstore.unity.com/packages/tools/utilities/extenject-dependency-injection-framework-157735)__
 
-    * Normally this should be the same as what you find in the [Releases section](https://github.com/svermeulen/Extenject/releases), but may also be slightly out of date since Unity Asset Store can take a week or so to review submissions sometimes.
+    * Normally this should be the same as what you find in the [Releases section](https://github.com/svermeulen/Yazef/releases), but may also be slightly out of date since Unity Asset Store can take a week or so to review submissions sometimes.
 
 1.  __UPM Branch__
 
@@ -189,7 +188,7 @@ You can install Zenject using any of the following methods
     * Use `UnityProject/Assets/Plugins/Zenject/Source/package.json`
         * Window -> Package Manager
         * Select `Add package from git URL...`
-        * Use `https://github.com/<organization>/Extenject.git?path=UnityProject/Assets/Plugins/Zenject/Source#<tag>`
+        * Use `https://github.com/svermeulen/Yazef.git?path=UnityProject/Assets/Plugins/Zenject/Source#<tag>`
 
 1.  __From Source__
 
@@ -2103,7 +2102,8 @@ public class MainInstaller : MonoInstaller
 `ScriptableObjectInstaller` works the same as `MonoInstaller` in this regard.
 
 ## Composite Installers
-Extenject allows you to compose your installers into tree structures. The so called *composite design pattern*. Where the `CompositeMonoInstaller` and `CompositeScripableObjectInstaller` are the *nodes* and the child installers the *leaves*.
+
+Yazef allows you to compose your installers into tree structures. The so called *composite design pattern*. Where the `CompositeMonoInstaller` and `CompositeScripableObjectInstaller` are the *nodes* and the child installers the *leaves*.
 A special use case - that's worthwhile to mention - is for smooth installation and updating of your asset packages in other projects. 
 
 Composite Installers have their own documentation [here](Documentation/CompositeInstaller.md).
@@ -2111,8 +2111,6 @@ Composite Installers have their own documentation [here](Documentation/Composite
 ## Using Zenject Outside Unity Or For DLLs
 
 If you are building some code as DLLs and then including them in Unity, you can still add bindings for those classes inside your installers, with the only limitation being that you have to use constructor injection.  If you want to use the other inject approaches such as member injection or method injection, then you can do that too, however in that case you will need to add a reference for your project to `Zenject-Usage.dll` which can be found in the `Zenject\Source\Usage` directory.  This DLL also includes the standard interfaces such as `ITickable,` `IInitializable,` etc. so you can use those as well.
-
-You can also use Zenject for non-unity projects by downloading `Zenject-NonUnity.zip` from the [releases section](https://github.com/svermeulen/Extenject/releases)
 
 Finally, if you are attempting to run unit tests outside of Unity using the Unity generated solution, you might encounter run time errors in the Zenject code when it attempts to access the Unity API.  You can disable this behaviour by adding a define for `ZEN_TESTS_OUTSIDE_UNITY` in the generated solution.
 
@@ -2135,12 +2133,6 @@ So if you often encounter this warning and are aware of the implications of what
 - **Ensure Deterministic Destruction Order On Application Quit** - When set to true, this will ensure that all GameObject's and IDisposables are destroyed in a predictable order when the application is closed.  By default it is set to false, because there are some undesirable implications to enabling this feature as described in [this section](#destruction-order).
 
 These settings can also be configured on a per DiContainer basis by changing the DiContainer.Settings property.  Changing this property will affect the given container as well as any subcontainers.
-
-There are also settings for the signals system which are documented [here](#settings).
-
-## Signals
-
-See [here](Documentation/Signals.md).
 
 ## Factories: Creating Objects Dynamically
 
@@ -2624,91 +2616,6 @@ If the scene destruction order is important to you, then you might consider also
 
 The reason this setting is not set to true by default is because it can cause crashes on Android as discussed [here](https://github.com/ssannandeji/Zenject-2019/issues/301).
 
-## UniRx Integration
-
-[UniRx](https://github.com/neuecc/UniRx) is a library that brings Reactive Extensions to Unity.  It can greatly simplify your code by thinking of some kinds of communication between classes as 'streams' of data.  For more details see the [UniRx docs](https://github.com/neuecc/UniRx).
-
-Zenject integration with UniRx is disabled by default.  To enable, you must add the define `ZEN_SIGNALS_ADD_UNIRX` to your project, which you can do by selecting Edit -> Project Settings -> Player and then adding `ZEN_SIGNALS_ADD_UNIRX` in the "Scripting Define Symbols" section
-
-With zenject version 7.0.0, you'll also have to change the Zenject.asmdef file to the following:
-
-```
-{
-    "name": "Zenject",
-    "references": [
-        "UniRx"
-    ]
-}
-```
-
-With `ZEN_SIGNALS_ADD_UNIRX` enabled, you can observe zenject signals via UniRx streams as explained in the [signals docs](Documentation/Signals.md), and you can also observe zenject events such as Tick, LateTick, and FixedTick etc. on the `TickableManager` class.  One example usage is to ensure that certain events are only handled a maximum of once per frame:
-
-```csharp
-public class User
-{
-    public string Username;
-}
-
-public class UserManager
-{
-    readonly List<User> _users = new List<User>();
-    readonly Subject<User> _userAddedStream = new Subject<User>();
-
-    public IReadOnlyList<User> Users
-    {
-        get { return _users; }
-    }
-
-    public IObservableRx<User> UserAddedStream
-    {
-        get { return _userAddedStream; }
-    }
-
-    public void AddUser(User user)
-    {
-        _users.Add(user);
-        _userAddedStream.OnNext(user);
-    }
-}
-
-public class UserDisplayWindow : IInitializable, IDisposable
-{
-    readonly TickableManager _tickManager;
-    readonly CompositeDisposable _disposables = new CompositeDisposable();
-    readonly UserManager _userManager;
-
-    public UserDisplayWindow(
-        UserManager userManager,
-        TickableManager tickManager)
-    {
-        _tickManager = tickManager;
-        _userManager = userManager;
-    }
-
-    public void Initialize()
-    {
-        _userManager.UserAddedStream.Sample(_tickManager.TickStream)
-            .Subscribe(x => SortView()).AddTo(_disposables);
-    }
-
-    void SortView()
-    {
-        // Sort the displayed user list
-    }
-
-    public void Dispose()
-    {
-        _disposables.Dispose();
-    }
-}
-```
-
-In this case we have some costly operation that we want to run every time some data changes (in this case, sorting), and all it does is affect how something is rendered (in this case, a displayed list of user names).  We could implement ITickable and then set a boolean flag every time the data changes, then perform the update inside Tick(), but this isn't really the reactive way of doing things, so we use Sample() instead.
-
-## Auto-Mocking using Moq
-
-See [here](Documentation/AutoMocking.md).
-
 ## Creating Unity EditorWindow's with Zenject
 
 If you need to add your own Unity plugin, and you want to create your own EditorWindow derived class, then you might consider using Zenject to help manage this code as well.  Let's go through an example of how you might do this:
@@ -2784,9 +2691,7 @@ Something else to note is that the rate at which the ITickable.Tick method gets 
 
 1. Use [memory pools](#memory-pools) with an initial size.  This should restrict all the costly instantiate operations to scene startup and allow you to avoid any performance spikes once the game starts.  Or, if you want to be really thorough, you could use a fixed size, which would trigger exceptions when the pool size limit is reached.
 
-2. Use [reflection baking](#reflection-baking).  This is often simply a matter of enabling it and forgetting it, and can eliminate as much as 45% of the time spent running zenject code during scene startup.
-
-3. Use Unity's Profiler.  When Unity's profiler is open, Zenject automatically adds profiling samples for all the common zenject interface operations including IInitializable.Initialize, ITickable.Tick, IDisposable.Dispose, etc.  in a similar way that unity does this automatically for all MonoBehaviour methods.  So, if you implement ITickable then you should see Foo.Tick in the profiler where Foo is one of your classes.
+2. Use Unity's Profiler.  When Unity's profiler is open, Zenject automatically adds profiling samples for all the common zenject interface operations including IInitializable.Initialize, ITickable.Tick, IDisposable.Dispose, etc.  in a similar way that unity does this automatically for all MonoBehaviour methods.  So, if you implement ITickable then you should see Foo.Tick in the profiler where Foo is one of your classes.
 
 One common frustration people have when they start to profile their Zenject project is that it can be difficult to distinguish between time spent in Zenject versus time spent in their own code.  And therefore it can be tempting to blame Zenject.  This is especially the case when looking at the costs related to scene startup, since the SceneContext.Awake method appears to eat up a lot of the frame.  SceneContext.Awake is where the install is triggered, and also where the entire object graph is constructed, so contains within it a combination of zenject code and also user code.
 
@@ -2805,63 +2710,40 @@ SceneContext.Awake detailed profiling: Total time tracked: 3104.19 ms.  Details:
   00.3% (01852x) (0010 ms) DiContainer.Inject
 ```
 
-Or, if you enable reflection baking, then the 'Direct Reflection' costs should be eliminated and it should appear more like this:
-
-```
-SceneContext.Awake detailed profiling: Total time tracked: 2357.43 ms.  Details:
-  79.1% (02964x) (1865 ms) User Code
-  06.4% (02928x) (0151 ms) DiContainer.Resolve
-  06.2% (01243x) (0145 ms) Type Analysis - Calling Baked Reflection Getter
-  02.8% (00003x) (0067 ms) Other
-  02.4% (00259x) (0057 ms) DiContainer.Bind
-  01.5% (01112x) (0034 ms) DiContainer.Instantiate
-  00.8% (01852x) (0020 ms) DiContainer.Inject
-  00.8% (01032x) (0018 ms) Searching Hierarchy
-```
-
 As you can see, in this case 79% of the costs incurred by calling SceneContext.Awake method were related to our game code (labelled here as User Code) rather than zenject.
 
-Note that when not using reflection baking, the costs associated with 'Direct Reflection' above should mostly only occur at startup.  This is because after the first time these costs are incurred, the results are cached.
+Note that the costs associated with 'Direct Reflection' above should mostly only occur at startup.  This is because after the first time these costs are incurred, the results are cached.
 
 You can also get minor gains in speed and minor reductions in memory allocations by defining `ZEN_STRIP_ASSERTS_IN_BUILDS` in build settings.  This will cause all asserts to be stripped out of builds.  However, note that debugging any zenject related errors within builds will be made significantly more difficult by doing this.
 
 For some benchmarks on Zenject versus other DI frameworks, see [here](https://github.com/svermeulen/IocPerformance) (see the charts at the bottom in particular).
 
-## Reflection Baking
+## Yazef vs Zenject
 
-One easy way to squeeze extra performance out of Zenject is to enable a feature called Reflection Baking.  This will move some of the costs associated with analyzing the types in your codebase (aka reflection) from runtime to build time.  In one of our products at Modest Tree, turning on baking resulted in a 45% reduction in zenject startup time (which amounted to around 424 milliseconds saved).  Results vary project to project depending on how many types are used and the target platform, but is often noticeable.
+The following features of Zenject have been removed in Yazef, in an effort to make it simpler, less bloated, and more maintainable:
 
-Reflection Baking will also reduce the time taken to instantiate new objects.  This is especially true on IL2CPP platforms, where instantiating via reflection is typically slower due to restrictions there.
+* Reflection Baking
+* Signals
+* Zenject Test Framework
+* Support for use in non-unity projects
+* Memory Pools - (Yazef still uses memory pools internally to minimize allocs, but does not expose memory pool functionality as part of API)
+* Async injection support
 
-To enable for your project, simply right click somewhere in the project tab and select Create -> Zenject -> Reflection Baking Settings. Now if you build your project again, reflection costs inside Zenject should be mostly eliminated.
+If you still need these features I would recommend using another Zenject fork instead.
 
-By default, reflection baking will modify all the generated assemblies in your project.  These include all the assemblies that Unity generates and places in the Library/ScriptAssemblies folder, and does not include any assemblies that are placed underneath the Assets directory (however you can also apply reflection baking there too as a [separate step](#reflection-baking-external-dlls))
+Also, the following default behaviour has changed:
 
-In many cases you will want to limit which areas of the code reflection baking is applied to.  You can do this by selecting the reflection baking settings object, unchecking the `All Generated Assemblies` flag, and then explicitly adding the assemblies you want to use to the `Include Assemblies` property.  Or you can leave the `All Generated Assemblies` flag set to true and instead limit which assemblies are changed by adding one or more regular expressions to the Namespace Patterns field, and also changing the `Exclude Assemblies` property.  For example, if all of your game code lives underneath the `ModestTree.SpaceFighter` namespace, then you could ensure that the reflection baking only applies there by adding `^ModestTree.SpaceFighter` as a namespace pattern.  Note that zenject will automatically add a namespace pattern for itself so it is not necessary for you to do this (however, it is necessary to add the zenject assemblies to `Include Assemblies` if you do not have `All Generated Assemblies` checked)
-
-By default, reflection baking will only apply to builds and will not be in effect while testing inside the unity editor.  If you want to temporarily disable baking you can uncheck `Is Enabled In Builds` in the inspector.  You can also force baking to apply while inside unity editor by checking `Is Enabled in Editor`.  However note that this will slow down compile times so probably will not be worth it, but can be useful when profiling to see the effect that the baking has.  Also note that if you are using Unity 2017 LTS then reflection baking can only be used by builds due to Unity API limitations.
-
-### Baking External DLLs
-
-When using reflection baking as described above, by adding a reflection baking settings object, this will only apply reflection baking to the C# files that are dropped directly into your unity project.  If you are using external dlls, and want to have reflection baking applied there as well, then you can do this by adding a post-build step.  There is a command line tool that you can find in the github repo by opening the `zenject\NonUnityBuild\Zenject.sln` file and building the "Zenject-ReflectionBakingCommandLine" project.
-
-### Under the hood
-
-Reflection Baking uses a library called [Cecil](https://github.com/jbevain/cecil) to do IL Weaving on the generated assemblies.  What this means is that after Unity generates the DLLs for the source files in your project, Zenject will edit those DLLs directly to embed zenject operations directly into your classes.   Normally, zenject has to iterate over every field, property, methods, and constructors of your classes to find what needs to be injected, and this is where the reflection costs are incurred.  However, once a class has reflection baking applied, then zenject just needs to call a static method on your class to retrieve all the information that it needs, which can be much faster.
-
-### Coverage Settings
-
-There are two settings on ProjectContext related to reflection baking that can be useful to be aware of.  `Editor Reflection Baking Coverage Mode` and `Builds Reflection Baking Coverage Mode`.  These values will determine what behaviour zenject should use when encountering types that do not have baked reflection information (Editor for when inside unity editor and Builds for when running inside generated builds).  The choices are:
-
-1. Fallback To Direct Reflection - This will cause zenject to incur the necessary reflection operations when baking info is not found.  This is the default.
-1. No Check Assume Full Coverage - With this value set, if no reflection baking information is found for a given type, then Zenject will assume that the type does not contain any reflection information.  This can be useful in cases where there is a lot of third party code that does not have reflection baking applied, but also does not use zenject in any way.   When coverage mode is set to (1), then this can be costly because Zenject will still analyze the third party code using reflection operations.  Note that when this is set, you will need to ensure that reflection baking is always applied everywhere that uses zenject.
-1. Fallback To Direct Reflection With Warning - With this value set, when Zenject encounters a type that does not have reflection baking applied, it will use costly reflection operations, but will also issue a warning.  This can be useful if your intention is to get full coverage with reflection baking, but you don't want to use mode (2) and cause things to completely break when certain types are missed by the baking process
+* For performance reasons, Zenject no longer automatically injects on monobehaviours in the scene by default
+    * You can however re-enable this behaviour with the checkbox "Auto Inject In Hierarchy" in SceneContext settings
+    * As a less costly alterative, you can manually add a ZenAutoInjecter component specifically to the GameObjects that you want auto injected.
+    * Note that the behaviour of ZenjectBinding depends on this flag being enabled.  So if you're using ZenjectBinding, you will need to remove ZenjectBinding and then manually add these bindings in an installer instead, or enable the "Auto Inject In Hierarchy" flag
+    * Note also that Zenject still auto-injects on any prefabs that are instantiated via DiContainer.  GameObjectContext behaviour is also unchanged
+* ProjectContext.ParentNewObjectsUnderContext is set to false by default to match SceneContext default
+* Does not auto-inject into Animator StateMachineBehaviour anymore.  If you need this, You need to instead manually add ZenjectStateMachineBehaviourAutoInjecter
 
 ## Upgrade Guide for Zenject 6
 
-The biggest backwards-incompatible change in Zenject 6 is that the signals system was re-written from scratch and works quite differently now.  However - if you want to continue using the previous signals implementation you can get a zenject-6-compatible version of that [here](https://github.com/svermeulen/ZenjectSignalsOld). So to use that, just import zenject 6 and make sure to uncheck the `Zenject/Source/Runtime/Signals` folder, and then add the ZenjectSignalsOld folder to your project from that link.
-
-Another backwards-incompatible change in zenject 6 is that AsSingle can no longer be used across multiple bind statements when mapping to the same instance.  In Zenject 5.x and earlier, you could do the following:
+One backwards-incompatible change in zenject 6 is that AsSingle can no longer be used across multiple bind statements when mapping to the same instance.  In Zenject 5.x and earlier, you could do the following:
 
 ```csharp
 public interface IFoo
@@ -3405,7 +3287,7 @@ See [here](Documentation/CheatSheet.md).
 
 ## Further Help
 
-For general troubleshooting / support, please use the [zenject subreddit](http://www.reddit.com/r/zenject) or the [zenject google group](https://groups.google.com/forum/#!forum/zenject/).  If you have found a bug, you are also welcome to create an issue on the [github page](https://github.com/svermeulen/Extenject), or a pull request if you have a fix / extension.  Finally, you can also email me directly at sfvermeulen@gmail.com or follow me on twitter at [@steve_verm](https://twitter.com/steve_verm)
+For general troubleshooting / support, please use the [zenject subreddit](http://www.reddit.com/r/zenject) or the [zenject google group](https://groups.google.com/forum/#!forum/zenject/).  If you have found a bug, you are also welcome to create an issue on the [github page](https://github.com/svermeulen/Yazef), or a pull request if you have a fix / extension.  Finally, you can also email me directly at sfvermeulen@gmail.com or follow me on twitter at [@steve_verm](https://twitter.com/steve_verm)
 
 ## Release Notes
 

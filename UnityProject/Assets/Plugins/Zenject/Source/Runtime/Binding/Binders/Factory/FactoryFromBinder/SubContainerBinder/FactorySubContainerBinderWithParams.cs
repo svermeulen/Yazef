@@ -1,9 +1,8 @@
 using System;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class FactorySubContainerBinderWithParams<TContract> : FactorySubContainerBinderBase<TContract>
     {
         public FactorySubContainerBinderWithParams(
@@ -11,8 +10,6 @@ namespace Zenject
             : base(bindContainer, bindInfo, factoryBindInfo, subIdentifier)
         {
         }
-
-#if !NOT_UNITY3D
 
         [System.Obsolete("ByNewPrefab has been renamed to ByNewContextPrefab to avoid confusion with ByNewPrefabInstaller and ByNewPrefabMethod")]
         public NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder ByNewPrefab(Type installerType, UnityEngine.Object prefab)
@@ -91,6 +88,5 @@ namespace Zenject
 
             return new NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder(BindInfo, gameObjectInfo);
         }
-#endif
     }
 }

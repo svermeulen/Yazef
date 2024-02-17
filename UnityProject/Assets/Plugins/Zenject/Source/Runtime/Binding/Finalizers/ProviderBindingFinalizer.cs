@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ModestTree;
 using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public abstract class ProviderBindingFinalizer : IBindingFinalizer
     {
         public ProviderBindingFinalizer(BindInfo bindInfo)

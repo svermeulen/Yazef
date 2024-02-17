@@ -1,6 +1,5 @@
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class FactoryToChoiceIdBinder<TParam1, TContract> : FactoryArgumentsToChoiceBinder<TParam1, TContract>
     {
         public FactoryToChoiceIdBinder(

@@ -1,4 +1,4 @@
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 
 namespace Zenject

@@ -1,11 +1,8 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Zenject.Internal;
 
 namespace Zenject
 {
@@ -19,6 +16,10 @@ namespace Zenject
 
         [SerializeField]
         List<ScriptableObjectInstaller> _lateScriptableObjectInstallers = new List<ScriptableObjectInstaller>();
+
+        [Tooltip("When true, zenject will scan and inject into all game objects during startup. Off by default due to its performance penalty")]
+        [SerializeField]
+        bool _autoInjectInHierarchy = false;
 
         public IEnumerable<MonoInstaller> LateInstallers
         {
@@ -85,11 +86,14 @@ namespace Zenject
 
             _container = container;
 
-            GetInjectableMonoBehaviours(_injectableMonoBehaviours);
-
-            foreach (var instance in _injectableMonoBehaviours)
+            if (_autoInjectInHierarchy)
             {
-                container.QueueForInject(instance);
+                GetInjectableMonoBehaviours(_injectableMonoBehaviours);
+
+                foreach (var instance in _injectableMonoBehaviours)
+                {
+                    container.QueueForInject(instance);
+                }
             }
         }
 
@@ -116,10 +120,7 @@ namespace Zenject
 
         protected override void GetInjectableMonoBehaviours(List<MonoBehaviour> monoBehaviours)
         {
-            var scene = gameObject.scene;
-
-            ZenUtilInternal.AddStateMachineBehaviourAutoInjectersInScene(scene);
-            ZenUtilInternal.GetInjectableMonoBehavioursInScene(scene, monoBehaviours);
+            ZenUtilInternal.GetInjectableMonoBehavioursInScene(gameObject.scene, monoBehaviours);
         }
 
         public void InstallLateDecoratorInstallers()
@@ -128,5 +129,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

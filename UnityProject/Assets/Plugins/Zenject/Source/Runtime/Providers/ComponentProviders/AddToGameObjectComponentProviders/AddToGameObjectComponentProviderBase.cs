@@ -1,15 +1,11 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ModestTree;
-using UnityEngine;
 using Zenject.Internal;
+using UnityEngine;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public abstract class AddToGameObjectComponentProviderBase : IProvider
     {
         readonly Type _componentType;
@@ -138,5 +134,3 @@ namespace Zenject
         protected abstract GameObject GetGameObject(InjectContext context);
     }
 }
-
-#endif

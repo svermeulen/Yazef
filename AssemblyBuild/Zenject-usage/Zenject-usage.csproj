@@ -13,35 +13,26 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <DebugSymbols>true</DebugSymbols>
+    <BaseOutputPath>bin</BaseOutputPath>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\Bin\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <OutputPath>bin\Debug\</OutputPath>
-    <IntermediateOutputPath>..\..\..\..\Temp\obj\Debug\Zenject-usage\</IntermediateOutputPath>
-    <BaseIntermediateOutputPath>..\..\..\..\Temp\obj\Debug\Zenject-usage\</BaseIntermediateOutputPath>
     <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-    <OutputPath>..\..\UnityProject\Assets\Plugins\Zenject\Source\Usage\</OutputPath>
-    <IntermediateOutputPath>..\..\..\..\Temp\obj\Release\Zenject-usage\</IntermediateOutputPath>
-    <BaseIntermediateOutputPath>..\..\..\..\Temp\obj\Release\Zenject-usage\</BaseIntermediateOutputPath>
     <Optimize>true</Optimize>
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug.InternalCloud'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\..\Bin\Assemblies\Debug.InternalCloud\</OutputPath>
-    <IntermediateOutputPath>..\..\..\..\Temp\obj\Debug.InternalCloud\Zenject-usage\</IntermediateOutputPath>
-    <BaseIntermediateOutputPath>..\..\..\..\Temp\obj\Debug.InternalCloud\Zenject-usage\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;DEBUG;NOT_UNITY3D</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,9 +43,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release.InternalCloud'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\..\Bin\Assemblies\Release.InternalCloud\</OutputPath>
-    <IntermediateOutputPath>..\..\..\..\Temp\obj\Release.InternalCloud\Zenject-usage\</IntermediateOutputPath>
-    <BaseIntermediateOutputPath>..\..\..\..\Temp\obj\Release.InternalCloud\Zenject-usage\</BaseIntermediateOutputPath>
     <DefineConstants>TRACE;DEBUG;NOT_UNITY3D</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>full</DebugType>
@@ -88,7 +76,6 @@
     <Compile Include="ILateDisposable.cs" />
     <Compile Include="InjectAttributeBase.cs" />
     <Compile Include="JetbrainsAnnotations.cs" />
-    <Compile Include="NoReflectionBakingAttribute.cs" />
     <Compile Include="PreserveAttribute.cs" />
     <Compile Include="ZenjectAllowDuringValidationAttribute.cs" />
   </ItemGroup>

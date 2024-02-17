@@ -1,6 +1,5 @@
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class WithKernelDefaultParentScopeConcreteIdArgConditionCopyNonLazyBinder : DefaultParentScopeConcreteIdArgConditionCopyNonLazyBinder
     {
         public WithKernelDefaultParentScopeConcreteIdArgConditionCopyNonLazyBinder(

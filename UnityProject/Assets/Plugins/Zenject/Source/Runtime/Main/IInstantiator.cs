@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-
-#if !NOT_UNITY3D
 using UnityEngine;
-#endif
 
 namespace Zenject
 {
@@ -20,8 +17,6 @@ namespace Zenject
 
         object Instantiate(Type concreteType);
         object Instantiate(Type concreteType, IEnumerable<object> extraArgs);
-
-#if !NOT_UNITY3D
 
         // Add new component to existing game object and fill in its dependencies
         // NOTE: Gameobject here is not a prefab prototype, it is an instance
@@ -101,7 +96,6 @@ namespace Zenject
             Type scriptableObjectType, string resourcePath, IEnumerable<object> extraArgs);
 
         GameObject CreateEmptyGameObject(string name);
-#endif
     }
 }
 

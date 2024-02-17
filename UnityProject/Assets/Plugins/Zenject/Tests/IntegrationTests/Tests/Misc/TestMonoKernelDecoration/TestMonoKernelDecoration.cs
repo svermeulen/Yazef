@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using ModestTree.Util;
+using Zenject.Internal;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Zenject;
 using Zenject.Tests.TestAnimationStateBehaviourInject;
+using Assert = NUnit.Framework.Assert;
 
 namespace Zenject.Tests.Misc.TestMonoKernelDecoration
 {

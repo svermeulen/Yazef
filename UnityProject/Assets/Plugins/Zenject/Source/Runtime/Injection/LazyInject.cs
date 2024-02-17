@@ -1,9 +1,8 @@
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
     [ZenjectAllowDuringValidation]
-    [NoReflectionBaking]
     public class LazyInject<T> : IValidatable
     {
         readonly DiContainer _container;

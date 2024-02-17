@@ -1,11 +1,8 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Zenject.Internal;
 
 #pragma warning disable 649
 
@@ -22,6 +19,10 @@ namespace Zenject
         [Tooltip("Note that this field is optional and can be ignored in most cases.  This is really only needed if you want to control the 'Script Execution Order' of your subcontainer.  In this case, define a new class that derives from MonoKernel, add it to this game object, then drag it into this field.  Then you can set a value for 'Script Execution Order' for this new class and this will control when all ITickable/IInitializable classes bound within this subcontainer get called.")]
         [FormerlySerializedAs("_facade")]
         MonoKernel _kernel;
+
+        [Tooltip("When true, zenject will scan and inject into all game objects during startup")]
+        [SerializeField]
+        bool _autoInjectInHierarchy = true;
 
         DiContainer _container;
 
@@ -94,17 +95,20 @@ namespace Zenject
 
             var injectableMonoBehaviours = new List<MonoBehaviour>();
 
-            GetInjectableMonoBehaviours(injectableMonoBehaviours);
-
-            foreach (var instance in injectableMonoBehaviours)
+            if (_autoInjectInHierarchy)
             {
-                if (instance is MonoKernel)
-                {
-                    Assert.That(ReferenceEquals(instance, _kernel),
-                        "Found MonoKernel derived class that is not hooked up to GameObjectContext.  If you use MonoKernel, you must indicate this to GameObjectContext by dragging and dropping it to the Kernel field in the inspector");
-                }
+                GetInjectableMonoBehaviours(injectableMonoBehaviours);
 
-                _container.QueueForInject(instance);
+                foreach (var instance in injectableMonoBehaviours)
+                {
+                    if (instance is MonoKernel)
+                    {
+                        Assert.That(ReferenceEquals(instance, _kernel),
+                            "Found MonoKernel derived class that is not hooked up to GameObjectContext.  If you use MonoKernel, you must indicate this to GameObjectContext by dragging and dropping it to the Kernel field in the inspector");
+                    }
+
+                    _container.QueueForInject(instance);
+                }
             }
 
             _container.IsInstalling = true;
@@ -157,8 +161,6 @@ namespace Zenject
 
         protected override void GetInjectableMonoBehaviours(List<MonoBehaviour> monoBehaviours)
         {
-            ZenUtilInternal.AddStateMachineBehaviourAutoInjectersUnderGameObject(gameObject);
-
             // We inject on all components on the root except ourself
             foreach (var monoBehaviour in GetComponents<MonoBehaviour>())
             {
@@ -215,5 +217,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

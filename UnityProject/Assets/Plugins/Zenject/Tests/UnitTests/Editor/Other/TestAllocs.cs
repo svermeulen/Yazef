@@ -5,9 +5,9 @@
 using System;
 using System.Diagnostics;
 using JetBrains.dotMemoryUnit;
-using ModestTree;
+using Zenject.Internal;
 using NUnit.Framework;
-using Assert=ModestTree.Assert;
+using Assert=Zenject.Internal.Assert;
 using System.Linq;
 
 namespace Zenject.Tests.Other

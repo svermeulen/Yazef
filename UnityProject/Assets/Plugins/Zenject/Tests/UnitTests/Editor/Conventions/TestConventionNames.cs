@@ -2,7 +2,7 @@
 #if !(UNITY_WSA && ENABLE_DOTNET)
 
 using NUnit.Framework;
-using Assert = ModestTree.Assert;
+using Assert = Zenject.Internal.Assert;
 
 namespace Zenject.Tests.Convention.Names
 {

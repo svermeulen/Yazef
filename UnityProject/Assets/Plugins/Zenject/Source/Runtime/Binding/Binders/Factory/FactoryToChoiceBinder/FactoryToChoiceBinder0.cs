@@ -1,9 +1,8 @@
 using System;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class FactoryToChoiceBinder<TContract> : FactoryFromBinder<TContract>
     {
         public FactoryToChoiceBinder(

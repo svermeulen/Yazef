@@ -1,12 +1,9 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class SubContainerCreatorByNewPrefab : ISubContainerCreator
     {
         readonly GameObjectCreationParameters _gameObjectBindInfo;
@@ -60,5 +57,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

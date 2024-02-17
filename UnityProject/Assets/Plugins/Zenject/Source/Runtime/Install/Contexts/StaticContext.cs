@@ -1,5 +1,3 @@
-#if !NOT_UNITY3D
-
 namespace Zenject
 {
     // For some platforms, it's desirable to be able to add dependencies to Zenject before
@@ -39,5 +37,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

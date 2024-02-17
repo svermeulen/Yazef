@@ -1,9 +1,8 @@
 using System.Linq;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class PlaceholderFactoryBindingFinalizer<TContract> : ProviderBindingFinalizer
     {
         readonly FactoryBindInfo _factoryBindInfo;

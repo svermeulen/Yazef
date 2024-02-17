@@ -1,12 +1,18 @@
 {
   "dependencies": {
+    "com.svkj.ext.humanize": "file:../../../../../../ext/cs/Humanize/unity/Humanize/Assets/humanize",
+    "com.svkj.ext.serilog": "file:../../../../../../ext/cs/serilog/unity/Serilog/Assets/serilog",
+    "com.svkj.ext.serilog.sinks.file": "file:../../../../../../ext/cs/serilog-sinks-file/unity/Serilog/Assets/serilog-sinks-file",
+    "com.svkj.ext.system.diagnostics.diagnosticsource": "file:../../../../../../ext/unity/System.Diagnostics.DiagnosticSource",
+    "com.svkj.ext.system.runtime.compilerservices.unsafe": "file:../../../../../../ext/unity/System.Runtime.CompilerServices.Unsafe",
+    "com.svkj.unity.core": "file:../../../sv-unity-core/Assets/sv-unity-core",
+    "com.svkj.unity.fuzzyfinder": "file:../../../sv-fuzzy-finder/Assets/sv-fuzzy-finder",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
-    "com.unity.collab-proxy": "1.2.16",
-    "com.unity.ide.rider": "1.1.4",
-    "com.unity.ide.vscode": "1.1.4",
-    "com.unity.test-framework": "1.1.9",
-    "com.unity.ugui": "1.0.0",
+    "com.unity.collab-proxy": "2.2.0",
+    "com.unity.ide.rider": "3.0.27",
+    "com.unity.ide.visualstudio": "2.0.22",
+    "com.unity.ide.vscode": "1.2.5",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -37,6 +43,8 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.unity.test-framework": "1.1.33",
+    "com.unity.ugui": "1.0.0"
   }
 }

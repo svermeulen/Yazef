@@ -2,7 +2,6 @@ using System;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class FactorySubContainerBinder<TParam1, TParam2, TParam3, TParam4, TParam5, TContract>
         : FactorySubContainerBinderWithParams<TContract>
     {
@@ -14,7 +13,7 @@ namespace Zenject
 
         public ScopeConcreteIdArgConditionCopyNonLazyBinder ByMethod(
 #if !NET_4_6 && !NET_STANDARD_2_0
-            ModestTree.Util.
+            Zenject.Internal.
 #endif
             Action<DiContainer, TParam1, TParam2, TParam3, TParam4, TParam5> installerMethod)
         {
@@ -29,10 +28,9 @@ namespace Zenject
             return new ScopeConcreteIdArgConditionCopyNonLazyBinder(BindInfo);
         }
 
-#if !NOT_UNITY3D
         public NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder ByNewGameObjectMethod(
 #if !NET_4_6 && !NET_STANDARD_2_0
-            ModestTree.Util.
+            Zenject.Internal.
 #endif
             Action<DiContainer, TParam1, TParam2, TParam3, TParam4, TParam5> installerMethod)
         {
@@ -50,7 +48,7 @@ namespace Zenject
         public NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder ByNewPrefabMethod(
             Func<InjectContext, UnityEngine.Object> prefabGetter,
 #if !NET_4_6 && !NET_STANDARD_2_0
-            ModestTree.Util.
+            Zenject.Internal.
 #endif
             Action<DiContainer, TParam1, TParam2, TParam3, TParam4, TParam5> installerMethod)
         {
@@ -70,7 +68,7 @@ namespace Zenject
         public NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder ByNewPrefabMethod(
             UnityEngine.Object prefab,
 #if !NET_4_6 && !NET_STANDARD_2_0
-            ModestTree.Util.
+            Zenject.Internal.
 #endif
             Action<DiContainer, TParam1, TParam2, TParam3, TParam4, TParam5> installerMethod)
         {
@@ -92,7 +90,7 @@ namespace Zenject
         public NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder ByNewPrefabResourceMethod(
             string resourcePath,
 #if !NET_4_6 && !NET_STANDARD_2_0
-            ModestTree.Util.
+            Zenject.Internal.
 #endif
             Action<DiContainer, TParam1, TParam2, TParam3, TParam4, TParam5> installerMethod)
         {
@@ -110,6 +108,5 @@ namespace Zenject
 
             return new NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder(BindInfo, gameObjectInfo);
         }
-#endif
     }
 }

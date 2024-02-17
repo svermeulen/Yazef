@@ -1,9 +1,8 @@
 using System;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class SingleProviderBindingFinalizer : ProviderBindingFinalizer
     {
         readonly Func<DiContainer, Type, IProvider> _providerFactory;

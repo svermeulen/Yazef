@@ -1,4 +1,4 @@
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject.Tests.AutoLoadSceneTests
 {

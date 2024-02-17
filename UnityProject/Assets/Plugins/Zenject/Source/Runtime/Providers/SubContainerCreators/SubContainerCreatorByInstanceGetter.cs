@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class SubContainerCreatorByInstanceGetter : ISubContainerCreator
     {
         readonly Func<InjectContext, DiContainer> _subcontainerGetter;

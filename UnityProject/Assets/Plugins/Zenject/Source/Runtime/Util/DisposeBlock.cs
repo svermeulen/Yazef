@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
-namespace Zenject
+namespace Zenject.Internal
 {
-    [NoReflectionBaking]
     public class DisposeBlock : IDisposable
     {
         static readonly StaticMemoryPool<DisposeBlock> _pool =

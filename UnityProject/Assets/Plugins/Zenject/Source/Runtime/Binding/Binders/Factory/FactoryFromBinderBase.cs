@@ -1,14 +1,10 @@
 using System;
 using System.Collections.Generic;
-using ModestTree;
-
-#if !NOT_UNITY3D
+using Zenject.Internal;
 using UnityEngine;
-#endif
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class FactoryFromBinderBase : ScopeConcreteIdArgConditionCopyNonLazyBinder
     {
         public FactoryFromBinderBase(
@@ -104,8 +100,6 @@ namespace Zenject
             // Very important here that we use NoFlush otherwise the main binding will be finalized early
             return BindContainer.BindNoFlush<T>().WithId(factoryId);
         }
-
-#if !NOT_UNITY3D
 
         public ConditionCopyNonLazyBinder FromComponentOn(GameObject gameObject)
         {
@@ -292,6 +286,5 @@ namespace Zenject
 
             return this;
         }
-#endif
     }
 }

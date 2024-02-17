@@ -1,12 +1,9 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class SubContainerPrefabBindingFinalizer : ProviderBindingFinalizer
     {
         readonly object _subIdentifier;
@@ -108,5 +105,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

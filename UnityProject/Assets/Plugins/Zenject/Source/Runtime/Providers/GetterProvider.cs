@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class GetterProvider<TObj, TResult> : IProvider
     {
         readonly DiContainer _container;

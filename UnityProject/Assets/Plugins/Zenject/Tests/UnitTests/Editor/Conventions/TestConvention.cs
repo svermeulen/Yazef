@@ -1,10 +1,10 @@
 #if !(UNITY_WSA && ENABLE_DOTNET)
 
 using System.Linq;
-using ModestTree;
+using Zenject.Internal;
 using NUnit.Framework;
 using UnityEngine;
-using Assert = ModestTree.Assert;
+using Assert = Zenject.Internal.Assert;
 
 namespace Zenject.Tests.Convention
 {
@@ -38,7 +38,6 @@ namespace Zenject.Tests.Convention
             Assert.IsEqual(Container.ResolveAll<IFoo>().Count(), 4);
         }
 
-#if !NOT_UNITY3D
         [Test]
         public void TestDerivingFromFail()
         {
@@ -47,7 +46,6 @@ namespace Zenject.Tests.Convention
 
             Assert.That(Container.ResolveAll<IFoo>().IsEmpty());
         }
-#endif
 
         [Test]
         public void TestAttributeFilter()

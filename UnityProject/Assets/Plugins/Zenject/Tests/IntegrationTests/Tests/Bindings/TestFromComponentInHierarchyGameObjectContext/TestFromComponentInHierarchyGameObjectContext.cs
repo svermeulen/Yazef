@@ -4,7 +4,7 @@ using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
-using Assert = ModestTree.Assert;
+using Assert = Zenject.Internal.Assert;
 
 namespace Zenject.Tests.Bindings.FromComponentInHierarchyGameObjectContext
 {

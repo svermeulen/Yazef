@@ -1,6 +1,6 @@
 ﻿
 using System.Collections;
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine.TestTools;
 
 namespace Zenject.Tests.TestAnimationStateBehaviourInject

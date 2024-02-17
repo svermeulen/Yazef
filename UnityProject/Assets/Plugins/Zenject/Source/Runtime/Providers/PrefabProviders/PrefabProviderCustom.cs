@@ -1,12 +1,9 @@
-#if !NOT_UNITY3D
-
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 using System;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class PrefabProviderCustom : IPrefabProvider
     {
         readonly Func<InjectContext, UnityEngine.Object> _getter;
@@ -24,6 +21,4 @@ namespace Zenject
         }
     }
 }
-
-#endif
 

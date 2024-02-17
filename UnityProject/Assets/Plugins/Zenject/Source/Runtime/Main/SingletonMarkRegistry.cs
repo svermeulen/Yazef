@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject.Internal
 {
-    [NoReflectionBaking]
     public class SingletonMarkRegistry
     {
         readonly HashSet<Type> _boundSingletons = new HashSet<Type>();

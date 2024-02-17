@@ -1,12 +1,9 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class PrefabGameObjectProvider : IProvider
     {
         readonly IPrefabInstantiator _prefabCreator;
@@ -42,4 +39,3 @@ namespace Zenject
     }
 }
 
-#endif

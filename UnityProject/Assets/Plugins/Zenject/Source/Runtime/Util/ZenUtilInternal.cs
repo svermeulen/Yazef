@@ -1,12 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ModestTree;
-using ModestTree.Util;
-#if !NOT_UNITY3D
+using Zenject.Internal;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-#endif
 
 namespace Zenject.Internal
 {
@@ -39,13 +36,11 @@ namespace Zenject.Internal
             if (obj == null || obj.Equals(null))
                 return true;
             
-#if !NOT_UNITY3D
             // This is very weird but sometimes when you check a component's value to see if it's null or not,
             // the component's null check shows the component is valid but the object is actually destroyed/invalid.
             // So as an additional measure we check for the gameObject as well.
             if (obj is Component c)
                 return c.gameObject == null;
-#endif
 
             return false;
         }
@@ -94,7 +89,6 @@ namespace Zenject.Internal
             return distance;
         }
 
-#if !NOT_UNITY3D
         public static IEnumerable<SceneContext> GetAllSceneContexts()
         {
             foreach (var scene in UnityUtil.AllLoadedScenes)
@@ -111,40 +105,6 @@ namespace Zenject.Internal
                     "Found multiple scene contexts in scene '{0}'", scene.name);
 
                 yield return contexts[0];
-            }
-        }
-
-        public static void AddStateMachineBehaviourAutoInjectersInScene(Scene scene)
-        {
-            foreach (var rootObj in GetRootGameObjects(scene))
-            {
-                if (rootObj != null)
-                {
-                    AddStateMachineBehaviourAutoInjectersUnderGameObject(rootObj);
-                }
-            }
-        }
-
-        // Call this before calling GetInjectableMonoBehavioursUnderGameObject to ensure that the StateMachineBehaviour's
-        // also get injected properly
-        // The StateMachineBehaviour's cannot be retrieved until after the Start() method so we
-        // need to use ZenjectStateMachineBehaviourAutoInjecter to do the injection at that
-        // time for us
-        public static void AddStateMachineBehaviourAutoInjectersUnderGameObject(GameObject root)
-        {
-#if ZEN_INTERNAL_PROFILING
-            using (ProfileTimers.CreateTimedBlock("Searching Hierarchy"))
-#endif
-            {
-                var animators = root.GetComponentsInChildren<Animator>(true);
-
-                foreach (var animator in animators)
-                {
-                    if (animator.gameObject.GetComponent<ZenjectStateMachineBehaviourAutoInjecter>() == null)
-                    {
-                        animator.gameObject.AddComponent<ZenjectStateMachineBehaviourAutoInjecter>();
-                    }
-                }
             }
         }
 
@@ -291,8 +251,6 @@ namespace Zenject.Internal
 
             return _disabledIndestructibleGameObject.transform;
         }
-#endif
-
 #endif
     }
 }

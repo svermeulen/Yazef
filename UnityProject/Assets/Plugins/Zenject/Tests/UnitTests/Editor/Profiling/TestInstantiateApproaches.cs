@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using ModestTree;
 using Zenject.Internal;
 
 #pragma warning disable 414
@@ -52,12 +51,10 @@ namespace Zenject.Tests.Injection
             return measurements.Average();
         }
 
-        [NoReflectionBaking]
         class Test0
         {
         }
 
-        [NoReflectionBaking]
         abstract class FooBaseBaked
         {
             [Inject]
@@ -153,7 +150,6 @@ namespace Zenject.Tests.Injection
             }
         }
 
-        [NoReflectionBaking]
         class FooDerivedBaked : FooBaseBaked
         {
             public Test0 ConstructorParam = null;
@@ -259,7 +255,6 @@ namespace Zenject.Tests.Injection
             }
         }
 
-        [NoReflectionBaking]
         abstract class FooBaseNoBaking
         {
             [Inject]
@@ -303,7 +298,6 @@ namespace Zenject.Tests.Injection
             }
         }
 
-        [NoReflectionBaking]
         class FooDerivedNoBaking : FooBaseNoBaking
         {
             public Test0 ConstructorParam = null;

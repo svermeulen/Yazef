@@ -1,5 +1,0 @@
-#!/bin/bash
-cd python
-source /usr/local/bin/virtualenvwrapper.sh
-workon extenject
-python3 -m mtm.zen.CreateSampleBuilds "$@"

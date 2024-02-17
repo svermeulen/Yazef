@@ -1,9 +1,8 @@
 using System;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class InstantiateCallbackConditionCopyNonLazyBinder : ConditionCopyNonLazyBinder
     {
         public InstantiateCallbackConditionCopyNonLazyBinder(BindInfo bindInfo)

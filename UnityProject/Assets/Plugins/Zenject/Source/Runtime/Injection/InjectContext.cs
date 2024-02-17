@@ -2,12 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ModestTree;
 using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class InjectContext : IDisposable
     {
         BindingId _bindingId;

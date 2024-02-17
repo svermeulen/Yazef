@@ -1,12 +1,9 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class InstantiateOnPrefabComponentProvider : IProvider
     {
         readonly IPrefabInstantiator _prefabInstantiator;
@@ -49,6 +46,3 @@ namespace Zenject
         }
     }
 }
-
-#endif
-

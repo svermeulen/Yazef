@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Assert = ModestTree.Assert;
+using Assert = Zenject.Internal.Assert;
 
 namespace Zenject.Tests
 {
@@ -120,23 +120,6 @@ namespace Zenject.Tests
         }
 
         [Test]
-        public void TestMemoryPoolFailure()
-        {
-            Container.BindMemoryPool<Bar, Bar.Pool>();
-
-            Assert.Throws(() => Container.ResolveRoots());
-        }
-
-        [Test]
-        public void TestMemoryPoolSuccess()
-        {
-            Container.Bind<Foo>().AsSingle();
-            Container.BindMemoryPool<Bar, Bar.Pool>();
-
-            Container.ResolveRoots();
-        }
-
-        [Test]
         public void TestCustomValidatable()
         {
             Container.BindInterfacesAndSelfTo<Loy>().AsSingle().NonLazy();
@@ -193,10 +176,6 @@ namespace Zenject.Tests
             }
 
             public class Factory : PlaceholderFactory<Bar>
-            {
-            }
-
-            public class Pool : MemoryPool<Bar>
             {
             }
         }

@@ -9,7 +9,6 @@ namespace Zenject
     public delegate object ZenFactoryMethod(object[] args);
     public delegate void ZenMemberSetterMethod(object obj, object value);
 
-    [NoReflectionBaking]
     public class InjectTypeInfo
     {
         public readonly Type Type;
@@ -45,7 +44,6 @@ namespace Zenject
             }
         }
 
-        [NoReflectionBaking]
         public class InjectMemberInfo
         {
             public readonly ZenMemberSetterMethod Setter;
@@ -60,7 +58,6 @@ namespace Zenject
             }
         }
 
-        [NoReflectionBaking]
         public class InjectConstructorInfo
         {
             // Null for abstract types
@@ -77,7 +74,6 @@ namespace Zenject
             }
         }
 
-        [NoReflectionBaking]
         public class InjectMethodInfo
         {
             public readonly string Name;

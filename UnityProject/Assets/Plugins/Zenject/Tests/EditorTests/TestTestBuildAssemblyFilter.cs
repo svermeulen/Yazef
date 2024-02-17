@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEditor;
 using Zenject.Internal;
+using Assert = NUnit.Framework.Assert;
 
 namespace Zenject.Tests.Internal
 {

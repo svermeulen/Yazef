@@ -1,5 +1,5 @@
 using System;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {

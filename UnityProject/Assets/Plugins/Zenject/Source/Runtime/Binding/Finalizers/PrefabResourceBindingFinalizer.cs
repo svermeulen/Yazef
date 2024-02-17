@@ -1,12 +1,9 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class PrefabResourceBindingFinalizer : ProviderBindingFinalizer
     {
         readonly GameObjectCreationParameters _gameObjectBindInfo;
@@ -153,5 +150,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

@@ -1,11 +1,8 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using ModestTree;
-using UnityEngine;
 using Zenject.Internal;
+using UnityEngine;
 
 namespace Zenject
 {
@@ -21,16 +18,13 @@ namespace Zenject
 
         static ProjectContext _instance;
 
-        // TODO: Set this to false the next time major version is incremented
         [Tooltip("When true, objects that are created at runtime will be parented to the ProjectContext")]
         [SerializeField]
-        bool _parentNewObjectsUnderContext = true;
+        bool _parentNewObjectsUnderContext = false;
 
+        [Tooltip("When true, zenject will scan and inject into all game objects during startup. Off by default due to its performance penalty")]
         [SerializeField]
-        ReflectionBakingCoverageModes _editorReflectionBakingCoverageMode = ReflectionBakingCoverageModes.FallbackToDirectReflection;
-
-        [SerializeField]
-        ReflectionBakingCoverageModes _buildsReflectionBakingCoverageMode = ReflectionBakingCoverageModes.FallbackToDirectReflection;
+        bool _autoInjectInHierarchy = false;
 
         [SerializeField]
         ZenjectSettings _settings = ZenjectSettings.Default;
@@ -237,15 +231,6 @@ namespace Zenject
             // Do this as early as possible before any type analysis occurs
             ReflectionTypeAnalyzer.ConstructorChoiceStrategy = _settings.ConstructorChoiceStrategy;
             
-            if (Application.isEditor)
-            {
-                TypeAnalyzer.ReflectionBakingCoverageMode = _editorReflectionBakingCoverageMode;
-            }
-            else
-            {
-                TypeAnalyzer.ReflectionBakingCoverageMode = _buildsReflectionBakingCoverageMode;
-            }
-
             var isValidating = ValidateOnNextRun;
 
             // Reset immediately to ensure it doesn't get used in another run
@@ -261,11 +246,15 @@ namespace Zenject
             }
 
             var injectableMonoBehaviours = new List<MonoBehaviour>();
-            GetInjectableMonoBehaviours(injectableMonoBehaviours);
 
-            foreach (var instance in injectableMonoBehaviours)
+            if (_autoInjectInHierarchy)
             {
-                _container.QueueForInject(instance);
+                GetInjectableMonoBehaviours(injectableMonoBehaviours);
+
+                foreach (var instance in injectableMonoBehaviours)
+                {
+                    _container.QueueForInject(instance);
+                }
             }
 
             _container.IsInstalling = true;
@@ -299,7 +288,6 @@ namespace Zenject
 
         protected override void GetInjectableMonoBehaviours(List<MonoBehaviour> monoBehaviours)
         {
-            ZenUtilInternal.AddStateMachineBehaviourAutoInjectersUnderGameObject(gameObject);
             ZenUtilInternal.GetInjectableMonoBehavioursUnderGameObject(gameObject, monoBehaviours);
         }
 
@@ -334,5 +322,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

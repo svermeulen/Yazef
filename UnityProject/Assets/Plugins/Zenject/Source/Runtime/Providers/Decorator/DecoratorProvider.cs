@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject.Internal
 {
@@ -10,7 +10,6 @@ namespace Zenject.Internal
             IProvider provider, InjectContext context, List<object> buffer);
     }
 
-    [NoReflectionBaking]
     public class DecoratorProvider<TContract> : IDecoratorProvider
     {
         readonly Dictionary<IProvider, List<object>> _cachedInstances =

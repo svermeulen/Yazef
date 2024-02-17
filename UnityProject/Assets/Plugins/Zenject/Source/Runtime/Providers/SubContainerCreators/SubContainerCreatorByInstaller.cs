@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ModestTree;
 using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class SubContainerCreatorByInstaller : ISubContainerCreator
     {
         readonly Type _installerType;

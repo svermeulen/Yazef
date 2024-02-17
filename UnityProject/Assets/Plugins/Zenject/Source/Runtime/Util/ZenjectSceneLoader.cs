@@ -1,7 +1,5 @@
-#if !NOT_UNITY3D
-
 using System;
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -223,5 +221,3 @@ namespace Zenject
 #endif
     }
 }
-
-#endif

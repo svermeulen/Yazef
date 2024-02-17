@@ -1,12 +1,9 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Zenject.Internal;
 #if UNITY_EDITOR
 using UnityEditor;
 
@@ -384,5 +381,3 @@ namespace Zenject
         protected abstract void GetInjectableMonoBehaviours(List<MonoBehaviour> components);
     }
 }
-
-#endif

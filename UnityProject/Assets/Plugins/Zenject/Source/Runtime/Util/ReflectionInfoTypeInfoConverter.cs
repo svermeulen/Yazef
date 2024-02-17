@@ -5,10 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using ModestTree;
-#if !NOT_UNITY3D
+using Zenject.Internal;
 using UnityEngine;
-#endif
 
 namespace Zenject.Internal
 {
@@ -56,12 +54,10 @@ namespace Zenject.Internal
         static ZenFactoryMethod TryCreateFactoryMethod(
             Type type, ReflectionTypeInfo.InjectConstructorInfo reflectionInfo)
         {
-#if !NOT_UNITY3D
             if (type.DerivesFromOrEqual<Component>())
             {
                 return null;
             }
-#endif
 
             if (type.IsAbstract())
             {

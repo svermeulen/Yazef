@@ -1,5 +1,3 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Diagnostics;
 using UnityEngine;
@@ -33,6 +31,4 @@ namespace Zenject
         }
     }
 }
-
-#endif
 

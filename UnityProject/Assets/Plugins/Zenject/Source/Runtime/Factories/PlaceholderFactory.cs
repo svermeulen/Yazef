@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-#if !NOT_UNITY3D
 using JetBrains.Annotations;
-#endif
 
 namespace Zenject
 {
@@ -11,9 +9,7 @@ namespace Zenject
     {
         // Note: Most of the time you should not override this method and should instead
         // use BindFactory<>.FromIFactory if you want to do some custom logic
-#if !NOT_UNITY3D
         [NotNull]
-#endif
         public virtual TValue Create()
         {
             return CreateInternal(new List<TypeValuePair>());
@@ -36,9 +32,7 @@ namespace Zenject
     {
         // Note: Most of the time you should not override this method and should instead
         // use BindFactory<>.FromIFactory if you want to do some custom logic
-#if !NOT_UNITY3D
         [NotNull]
-#endif
         public virtual TValue Create(TParam1 param)
         {
             return CreateInternal(
@@ -65,9 +59,7 @@ namespace Zenject
     {
         // Note: Most of the time you should not override this method and should instead
         // use BindFactory<>.FromIFactory if you want to do some custom logic
-#if !NOT_UNITY3D
         [NotNull]
-#endif
         public virtual TValue Create(TParam1 param1, TParam2 param2)
         {
             return CreateInternal(
@@ -99,9 +91,7 @@ namespace Zenject
     {
         // Note: Most of the time you should not override this method and should instead
         // use BindFactory<>.FromIFactory if you want to do some custom logic
-#if !NOT_UNITY3D
         [NotNull]
-#endif
         public virtual TValue Create(TParam1 param1, TParam2 param2, TParam3 param3)
         {
             return CreateInternal(
@@ -135,9 +125,7 @@ namespace Zenject
     {
         // Note: Most of the time you should not override this method and should instead
         // use BindFactory<>.FromIFactory if you want to do some custom logic
-#if !NOT_UNITY3D
         [NotNull]
-#endif
         public virtual TValue Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4)
         {
             return CreateInternal(
@@ -174,9 +162,7 @@ namespace Zenject
     {
         // Note: Most of the time you should not override this method and should instead
         // use BindFactory<>.FromIFactory if you want to do some custom logic
-#if !NOT_UNITY3D
         [NotNull]
-#endif
         public virtual TValue Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5)
         {
             return CreateInternal(
@@ -215,9 +201,7 @@ namespace Zenject
     {
         // Note: Most of the time you should not override this method and should instead
         // use BindFactory<>.FromIFactory if you want to do some custom logic
-#if !NOT_UNITY3D
         [NotNull]
-#endif
         public virtual TValue Create(TParam1 param1, TParam2 param2, TParam3 param3, TParam4 param4, TParam5 param5, TParam6 param6)
         {
             return CreateInternal(

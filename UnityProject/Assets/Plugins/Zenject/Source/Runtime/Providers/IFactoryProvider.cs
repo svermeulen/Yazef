@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
@@ -46,7 +46,6 @@ namespace Zenject
 
     // Zero parameters
 
-    [NoReflectionBaking]
     public class IFactoryProvider<TContract> : IFactoryProviderBase<TContract>
     {
         public IFactoryProvider(
@@ -83,7 +82,6 @@ namespace Zenject
 
     // One parameter
 
-    [NoReflectionBaking]
     public class IFactoryProvider<TParam1, TContract> : IFactoryProviderBase<TContract>
     {
         public IFactoryProvider(DiContainer container, Guid factoryId)
@@ -120,7 +118,6 @@ namespace Zenject
 
     // Two parameters
 
-    [NoReflectionBaking]
     public class IFactoryProvider<TParam1, TParam2, TContract> : IFactoryProviderBase<TContract>
     {
         public IFactoryProvider(DiContainer container, Guid factoryId)
@@ -160,7 +157,6 @@ namespace Zenject
 
     // Three parameters
 
-    [NoReflectionBaking]
     public class IFactoryProvider<TParam1, TParam2, TParam3, TContract> : IFactoryProviderBase<TContract>
     {
         public IFactoryProvider(DiContainer container, Guid factoryId)
@@ -202,7 +198,6 @@ namespace Zenject
 
     // Four parameters
 
-    [NoReflectionBaking]
     public class IFactoryProvider<TParam1, TParam2, TParam3, TParam4, TContract> : IFactoryProviderBase<TContract>
     {
         public IFactoryProvider(DiContainer container, Guid factoryId)
@@ -246,7 +241,6 @@ namespace Zenject
 
     // Five parameters
 
-    [NoReflectionBaking]
     public class IFactoryProvider<TParam1, TParam2, TParam3, TParam4, TParam5, TContract> : IFactoryProviderBase<TContract>
     {
         public IFactoryProvider(DiContainer container, Guid factoryId)
@@ -292,7 +286,6 @@ namespace Zenject
 
     // Six parameters
 
-    [NoReflectionBaking]
     public class IFactoryProvider<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TContract> : IFactoryProviderBase<TContract>
     {
         public IFactoryProvider(DiContainer container, Guid factoryId)
@@ -340,7 +333,6 @@ namespace Zenject
 
     // Ten parameters
 
-    [NoReflectionBaking]
     public class IFactoryProvider<TParam1, TParam2, TParam3, TParam4, TParam5, TParam6, TParam7, TParam8, TParam9, TParam10, TContract> : IFactoryProviderBase<TContract>
     {
         public IFactoryProvider(DiContainer container, Guid factoryId)

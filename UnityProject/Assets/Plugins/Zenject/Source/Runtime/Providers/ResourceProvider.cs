@@ -1,13 +1,10 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class ResourceProvider : IProvider
     {
         readonly Type _resourceType;
@@ -69,7 +66,4 @@ namespace Zenject
         }
     }
 }
-
-#endif
-
 

@@ -1,13 +1,9 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ModestTree;
-using ModestTree.Util;
+using Zenject.Internal;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Zenject.Internal;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
@@ -47,6 +43,10 @@ namespace Zenject
         [Tooltip("Optional contract names of SceneContexts in previously loaded scenes that this context depends on and to which it should be parented")]
         [SerializeField]
         List<string> _parentContractNames = new List<string>();
+
+        [Tooltip("When true, zenject will scan and inject into all game objects during startup. Off by default due to its performance penalty")]
+        [SerializeField]
+        bool _autoInjectInHierarchy = false;
 
         DiContainer _container;
 
@@ -287,13 +287,16 @@ namespace Zenject
             // Record all the injectable components in the scene BEFORE installing the installers
             // This is nice for cases where the user calls InstantiatePrefab<>, etc. in their installer
             // so that it doesn't inject on the game object twice
-            // InitialComponentsInjecter will also guarantee that any component that is injected into
+            // Should also help guarantee that any component that is injected into
             // another component has itself been injected
             var injectableMonoBehaviours = new List<MonoBehaviour>();
-            GetInjectableMonoBehaviours(injectableMonoBehaviours);
-            foreach (var instance in injectableMonoBehaviours)
+            if (_autoInjectInHierarchy)
             {
-                _container.QueueForInject(instance);
+                GetInjectableMonoBehaviours(injectableMonoBehaviours);
+                foreach (var instance in injectableMonoBehaviours)
+                {
+                    _container.QueueForInject(instance);
+                }
             }
 
             // UIDocument is defined in the UI Elements package. In Unity 2021.1 the package was deprecated
@@ -419,10 +422,7 @@ namespace Zenject
 
         protected override void GetInjectableMonoBehaviours(List<MonoBehaviour> monoBehaviours)
         {
-            var scene = gameObject.scene;
-
-            ZenUtilInternal.AddStateMachineBehaviourAutoInjectersInScene(scene);
-            ZenUtilInternal.GetInjectableMonoBehavioursInScene(scene, monoBehaviours);
+            ZenUtilInternal.GetInjectableMonoBehavioursInScene(gameObject.scene, monoBehaviours);
         }
 
         // These methods can be used for cases where you need to create the SceneContext entirely in code
@@ -436,5 +436,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

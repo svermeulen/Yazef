@@ -1,5 +1,3 @@
-#if !NOT_UNITY3D
-
 namespace Zenject
 {
     public interface IPrefabProvider
@@ -7,6 +5,4 @@ namespace Zenject
         UnityEngine.Object GetPrefab(InjectContext context);
     }
 }
-
-#endif
 

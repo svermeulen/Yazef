@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class CopyNonLazyBinder : NonLazyBinder
     {
         List<BindInfo> _secondaryBindInfos;

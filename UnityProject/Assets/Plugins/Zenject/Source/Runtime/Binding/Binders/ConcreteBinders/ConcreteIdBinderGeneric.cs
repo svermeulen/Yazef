@@ -1,6 +1,5 @@
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class ConcreteIdBinderGeneric<TContract> : ConcreteBinderGeneric<TContract>
     {
         public ConcreteIdBinderGeneric(

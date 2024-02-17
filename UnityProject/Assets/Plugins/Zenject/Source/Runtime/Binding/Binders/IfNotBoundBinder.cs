@@ -1,6 +1,5 @@
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class IfNotBoundBinder
     {
         public IfNotBoundBinder(BindInfo bindInfo)

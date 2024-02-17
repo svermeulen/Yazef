@@ -8,12 +8,11 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
     [CustomEditor(typeof(SceneDecoratorContext))]
-    [NoReflectionBaking]
     public class SceneDecoratorContextEditor : ContextEditor
     {
         SerializedProperty _decoratedContractNameProperty;
@@ -26,7 +25,8 @@ namespace Zenject
                     {
                         "_lateInstallers",
                         "_lateInstallerPrefabs",
-                        "_lateScriptableObjectInstallers"
+                        "_lateScriptableObjectInstallers",
+                        "_autoInjectInHierarchy"
                     })
                     .ToArray();
             }
@@ -40,7 +40,8 @@ namespace Zenject
                     {
                         "Late Installers",
                         "Late Prefab Installers",
-                        "Late Scriptable Object Installers"
+                        "Late Scriptable Object Installers",
+                        "Auto Inject In Hierarchy"
                     })
                     .ToArray();
             }
@@ -54,7 +55,8 @@ namespace Zenject
                     {
                         "Drag any MonoInstallers that you have added to your Scene Hierarchy here. They'll be installed after the target installs its bindings",
                         "Drag any prefabs that contain a MonoInstaller on them here. They'll be installed after the target installs its bindings",
-                        "Drag any assets in your Project that implement ScriptableObjectInstaller here. They'll be installed after the target installs its bindings"
+                        "Drag any assets in your Project that implement ScriptableObjectInstaller here. They'll be installed after the target installs its bindings",
+                        "When true, zenject will scan and inject into all game objects during startup. Off by default due to its performance penalty"
                     })
                     .ToArray();
             }

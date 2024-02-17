@@ -2,7 +2,6 @@ using System;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class FactorySubContainerBinder<TParam1, TContract>
         : FactorySubContainerBinderWithParams<TContract>
     {
@@ -24,8 +23,6 @@ namespace Zenject
 
             return new ScopeConcreteIdArgConditionCopyNonLazyBinder(BindInfo);
         }
-
-#if !NOT_UNITY3D
 
         public NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder ByNewGameObjectMethod(
             Action<DiContainer, TParam1> installerMethod)
@@ -92,6 +89,5 @@ namespace Zenject
 
             return new NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder(BindInfo, gameObjectInfo);
         }
-#endif
     }
 }

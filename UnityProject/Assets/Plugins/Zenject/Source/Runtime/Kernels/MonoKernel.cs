@@ -1,8 +1,6 @@
-#if !NOT_UNITY3D
-
 #pragma warning disable 649
 
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 
 namespace Zenject
@@ -125,5 +123,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

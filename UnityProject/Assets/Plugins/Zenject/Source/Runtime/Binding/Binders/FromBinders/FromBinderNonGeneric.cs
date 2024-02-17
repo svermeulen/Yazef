@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
-
-#if !NOT_UNITY3D
 using UnityEngine;
-#endif
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class FromBinderNonGeneric : FromBinder
     {
         public FromBinderNonGeneric(
@@ -76,8 +72,6 @@ namespace Zenject
             return FromInstanceBase(instance);
         }
 
-#if !NOT_UNITY3D
-
         public ScopeConcreteIdArgConditionCopyNonLazyBinder FromComponentsInChildren(
             Func<Component, bool> predicate, bool includeInactive = true)
         {
@@ -95,6 +89,5 @@ namespace Zenject
         {
             return FromComponentsInHierarchyBase(predicate, includeInactive);
         }
-#endif
     }
 }

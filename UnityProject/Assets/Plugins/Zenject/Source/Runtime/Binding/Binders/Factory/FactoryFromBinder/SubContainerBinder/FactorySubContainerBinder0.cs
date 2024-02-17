@@ -1,9 +1,8 @@
 using System;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class FactorySubContainerBinder<TContract>
         : FactorySubContainerBinderBase<TContract>
     {
@@ -25,8 +24,6 @@ namespace Zenject
 
             return new ScopeConcreteIdArgConditionCopyNonLazyBinder(BindInfo);
         }
-
-#if !NOT_UNITY3D
 
         public NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder ByNewGameObjectMethod(Action<DiContainer> installerMethod)
         {
@@ -138,6 +135,5 @@ namespace Zenject
 
             return new NameTransformScopeConcreteIdArgConditionCopyNonLazyBinder(BindInfo, gameObjectInfo);
         }
-#endif
     }
 }

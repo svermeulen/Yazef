@@ -4,7 +4,6 @@ using UnityEditor;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class ContextEditor : UnityInspectorListEditor
     {
         private SerializedProperty _findSiblingInstallers;

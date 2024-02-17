@@ -1,12 +1,9 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class AddToNewGameObjectComponentProvider : AddToGameObjectComponentProviderBase
     {
         readonly GameObjectCreationParameters _gameObjectBindInfo;
@@ -37,5 +34,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

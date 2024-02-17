@@ -5,16 +5,17 @@ using UnityEditor;
 namespace Zenject
 {
     [CustomEditor(typeof(GameObjectContext))]
-    [NoReflectionBaking]
     public class GameObjectContextEditor : RunnableContextEditor
     {
         SerializedProperty _kernel;
+        SerializedProperty _autoInjectInHierarchy;
 
         public override void OnEnable()
         {
             base.OnEnable();
 
             _kernel = serializedObject.FindProperty("_kernel");
+            _autoInjectInHierarchy = serializedObject.FindProperty("_autoInjectInHierarchy");
         }
 
         protected override void OnGui()
@@ -22,6 +23,7 @@ namespace Zenject
             base.OnGui();
 
             EditorGUILayout.PropertyField(_kernel);
+            EditorGUILayout.PropertyField(_autoInjectInHierarchy);
         }
     }
 }

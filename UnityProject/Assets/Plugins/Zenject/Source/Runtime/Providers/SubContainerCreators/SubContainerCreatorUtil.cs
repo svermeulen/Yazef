@@ -1,8 +1,6 @@
 using System;
-using ModestTree;
-#if !NOT_UNITY3D
+using Zenject.Internal;
 using UnityEngine;
-#endif
 
 namespace Zenject
 {
@@ -30,13 +28,11 @@ namespace Zenject
                     subContainer.Bind<Kernel>().AsCached();
                 }
 
-#if !NOT_UNITY3D
                 if (subContainerBindInfo.DefaultParentName != null)
                 {
                     DefaultGameObjectParentInstaller.Install(
                         subContainer, subContainerBindInfo.DefaultParentName);
                 }
-#endif
             }
         }
     }

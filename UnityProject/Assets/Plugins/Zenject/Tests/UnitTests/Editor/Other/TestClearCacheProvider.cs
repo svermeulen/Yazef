@@ -1,6 +1,6 @@
 using System.Linq;
 using NUnit.Framework;
-using Assert = ModestTree.Assert;
+using Assert = Zenject.Internal.Assert;
 
 namespace Zenject.Tests.Other
 {
@@ -19,7 +19,6 @@ namespace Zenject.Tests.Other
         {
         }
 
-        // For issue https://github.com/modesttree/Zenject/issues/441
         [Test]
         public void Test1()
         {

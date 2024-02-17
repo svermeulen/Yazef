@@ -5,6 +5,7 @@
 /Builds
 /obj
 /Logs
+/UserSettings
 
 /.vs
 
@@ -21,3 +22,5 @@
 
 # MacOS folder specific attributes:
 .DS_Store
+
+svkj.log

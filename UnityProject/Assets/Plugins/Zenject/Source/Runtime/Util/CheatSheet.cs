@@ -1,10 +1,10 @@
 using System.Linq;
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 
 #pragma warning disable 219
 
-namespace Zenject
+namespace Zenject.Internal
 {
     public class CheatSheet : Installer<CheatSheet>
     {

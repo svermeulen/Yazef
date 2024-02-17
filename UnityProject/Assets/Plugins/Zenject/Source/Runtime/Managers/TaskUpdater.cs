@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using ModestTree;
+using Zenject.Internal;
 
 namespace Zenject
 {
@@ -92,7 +92,7 @@ namespace Zenject
 
                 if (info.IsRemoved)
                 {
-                    //ModestTree.Log.Debug("Removed task '" + info.Task.GetType().ToString() + "'");
+                    //Zenject.Internal.Log.Debug("Removed task '" + info.Task.GetType().ToString() + "'");
                     tasks.Remove(node);
                 }
 

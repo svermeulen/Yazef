@@ -2,7 +2,7 @@
 using System;
 using NUnit.Framework;
 using Zenject.Internal;
-using Assert = ModestTree.Assert;
+using Assert = Zenject.Internal.Assert;
 
 namespace Zenject.Tests.Other
 {
@@ -17,7 +17,6 @@ namespace Zenject.Tests.Other
         {
         }
 
-        [NoReflectionBaking]
         class Foo
         {
             [InjectCustom]

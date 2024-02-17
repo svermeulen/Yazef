@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using ModestTree;
+using Zenject.Internal;
 
-namespace Zenject
+namespace Zenject.Internal
 {
     // Similar to ProfileBlock except used for measuring speed of zenject specifically
     // And does not use unity's profiler

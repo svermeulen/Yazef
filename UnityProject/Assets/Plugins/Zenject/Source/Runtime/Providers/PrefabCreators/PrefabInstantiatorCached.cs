@@ -1,13 +1,10 @@
-#if !NOT_UNITY3D
-
 using System;
 using System.Collections.Generic;
-using ModestTree;
+using Zenject.Internal;
 using UnityEngine;
 
 namespace Zenject
 {
-    [NoReflectionBaking]
     public class PrefabInstantiatorCached : IPrefabInstantiator
     {
         readonly IPrefabInstantiator _subInstantiator;
@@ -56,5 +53,3 @@ namespace Zenject
         }
     }
 }
-
-#endif

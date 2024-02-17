@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ModestTree
+namespace Zenject.Internal
 {
     public static class MiscExtensions
     {

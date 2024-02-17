@@ -2,12 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ModestTree;
-using ModestTree.Util;
 using Zenject.Internal;
-#if !NOT_UNITY3D
 using UnityEngine;
-#endif
 
 namespace Zenject
 {
@@ -17,7 +13,6 @@ namespace Zenject
     // - Expose methods to configure object graph via BindX() methods
     // - Look up bound values via Resolve() method
     // - Instantiate new values via InstantiateX() methods
-    [NoReflectionBaking]
     public class DiContainer : IInstantiator
     {
         readonly Dictionary<Type, IDecoratorProvider> _decorators = new Dictionary<Type, IDecoratorProvider>();
@@ -37,13 +32,11 @@ namespace Zenject
         readonly HashSet<Type> _validatedTypes = new HashSet<Type>();
         readonly List<IValidatable> _validationQueue = new List<IValidatable>();
 
-#if !NOT_UNITY3D
         Transform _contextTransform;
         bool _hasLookedUpContextTransform;
         Transform _inheritedDefaultParent;
         Transform _explicitDefaultParent;
         bool _hasExplicitDefaultParent;
-#endif
 
         ZenjectSettings _settings;
 
@@ -86,9 +79,7 @@ namespace Zenject
                     parentContainers[i].FlushBindings();
                 }
 
-#if !NOT_UNITY3D
                 _inheritedDefaultParent = parentContainers.First().DefaultParent;
-#endif
 
                 // Make sure to avoid duplicates which could happen if a parent container
                 // appears multiple times in the inheritance chain
@@ -223,7 +214,6 @@ namespace Zenject
             return false;
         }
 
-#if !NOT_UNITY3D
         // This might be null in some rare cases like when used in ZenjectUnitTestFixture
         Transform ContextTransform
         {
@@ -244,7 +234,6 @@ namespace Zenject
                 return _contextTransform;
             }
         }
-#endif
 
         // When true, this will throw exceptions whenever we create new game objects
         // This is helpful when used in places like EditorWindowKernel where we can't
@@ -254,8 +243,6 @@ namespace Zenject
             get;
             set;
         }
-
-#if !NOT_UNITY3D
 
         public Transform InheritedDefaultParent
         {
@@ -272,7 +259,6 @@ namespace Zenject
                 _hasExplicitDefaultParent = true;
             }
         }
-#endif
 
         public DiContainer[] ParentContainers
         {
@@ -1275,10 +1261,8 @@ namespace Zenject
         object InstantiateInternal(
             Type concreteType, bool autoInject, List<TypeValuePair> extraArgs, InjectContext context, object concreteIdentifier)
         {
-#if !NOT_UNITY3D
             Assert.That(!concreteType.DerivesFrom<Component>(),
                 "Error occurred while instantiating object of type '{0}'. Instantiator should not be used to create new mono behaviours.  Must use InstantiatePrefabForComponent, InstantiatePrefab, or InstantiateComponent.", concreteType);
-#endif
 
             Assert.That(!concreteType.IsAbstract(), "Expected type '{0}' to be non-abstract", concreteType);
 
@@ -1293,7 +1277,6 @@ namespace Zenject
 
             object newObj;
 
-#if !NOT_UNITY3D
             if (concreteType.DerivesFrom<ScriptableObject>())
             {
                 Assert.That(typeInfo.InjectConstructor.Parameters.Length == 0,
@@ -1309,7 +1292,6 @@ namespace Zenject
                 }
             }
             else
-#endif
             {
                 Assert.IsNotNull(typeInfo.InjectConstructor.Factory,
                     "More than one (or zero) constructors found for type '{0}' when creating dependencies.  Use one [Inject] attribute to specify which to use.", concreteType);
@@ -1347,7 +1329,7 @@ namespace Zenject
 
                     if (!IsValidating || allowDuringValidation)
                     {
-                        //ModestTree.Log.Debug("Zenject: Instantiating type '{0}'", concreteType);
+                        //Zenject.Internal.Log.Debug("Zenject: Instantiating type '{0}'", concreteType);
                         try
                         {
 #if ZEN_INTERNAL_PROFILING
@@ -1621,13 +1603,11 @@ namespace Zenject
                 Assert.IsEqual(injectable.GetType(), injectableType);
             }
 
-#if !NOT_UNITY3D
             if (injectableType == typeof(GameObject))
             {
                 Assert.CreateException(
                     "Use InjectGameObject to Inject game objects instead of Inject method. Object graph: {0}", context.GetObjectGraphString());
             }
-#endif
 
             FlushBindings();
             CheckForInstallWarning(context);
@@ -1645,8 +1625,6 @@ namespace Zenject
                     injectableType, String.Join(",", extraArgs.Select(x => x.Type.PrettyName()).ToArray()), context.GetObjectGraphString());
             }
         }
-
-#if !NOT_UNITY3D
 
         // Don't use this unless you know what you're doing
         // You probably want to use InstantiatePrefab instead
@@ -1887,8 +1865,6 @@ namespace Zenject
             return gameObj;
         }
 
-#endif
-
         // Use this method to create any non-monobehaviour
         // Any fields marked [Inject] will be set using the bindings on the container
         // Any methods marked with a [Inject] will be called
@@ -1930,7 +1906,6 @@ namespace Zenject
                 concreteType, InjectUtil.CreateArgList(extraArgs));
         }
 
-#if !NOT_UNITY3D
         // Add new component to existing game object and fill in its dependencies
         // This is the same as AddComponent except the [Inject] fields will be filled in
         // NOTE: Gameobject here is not a prefab prototype, it is an instance
@@ -2285,8 +2260,6 @@ namespace Zenject
         {
             FlushBindings();
 
-            ZenUtilInternal.AddStateMachineBehaviourAutoInjectersUnderGameObject(gameObject);
-
             var monoBehaviours = ZenPools.SpawnList<MonoBehaviour>();
             try
             {
@@ -2347,8 +2320,6 @@ namespace Zenject
                     "Cannot inject into non-monobehaviours!  Argument list must be zero length");
             }
 
-            ZenUtilInternal.AddStateMachineBehaviourAutoInjectersUnderGameObject(gameObject);
-
             var injectableMonoBehaviours = ZenPools.SpawnList<MonoBehaviour>();
             try
             {
@@ -2383,7 +2354,6 @@ namespace Zenject
 
             return matches[0];
         }
-#endif
 
         // When you call any of these Inject methods
         //    Any fields marked [Inject] will be set using the bindings on the container
@@ -2948,63 +2918,6 @@ namespace Zenject
             return BindFactoryInternal<TContract, TFactoryContract, TFactoryConcrete>();
         }
 
-        public MemoryPoolIdInitialSizeMaxSizeBinder<TItemContract> BindMemoryPool<TItemContract>()
-        {
-            return BindMemoryPool<TItemContract, MemoryPool<TItemContract>>();
-        }
-
-        public MemoryPoolIdInitialSizeMaxSizeBinder<TItemContract> BindMemoryPool<TItemContract, TPool>()
-            where TPool : IMemoryPool
-        {
-            return BindMemoryPoolCustomInterface<TItemContract, TPool, TPool>();
-        }
-
-        public MemoryPoolIdInitialSizeMaxSizeBinder<TItemContract> BindMemoryPoolCustomInterface<TItemContract, TPoolConcrete, TPoolContract>(bool includeConcreteType = false)
-            where TPoolConcrete : TPoolContract, IMemoryPool
-            where TPoolContract : IMemoryPool
-        {
-            return BindMemoryPoolCustomInterfaceInternal<TItemContract, TPoolConcrete, TPoolContract>(includeConcreteType, StartBinding());
-        }
-
-        internal MemoryPoolIdInitialSizeMaxSizeBinder<TItemContract> BindMemoryPoolCustomInterfaceNoFlush<TItemContract, TPoolConcrete, TPoolContract>(bool includeConcreteType = false)
-            where TPoolConcrete : TPoolContract, IMemoryPool
-            where TPoolContract : IMemoryPool
-        {
-            return BindMemoryPoolCustomInterfaceInternal<TItemContract, TPoolConcrete, TPoolContract>(includeConcreteType, StartBinding(false));
-        }
-
-        MemoryPoolIdInitialSizeMaxSizeBinder<TItemContract> BindMemoryPoolCustomInterfaceInternal<TItemContract, TPoolConcrete, TPoolContract>(
-            bool includeConcreteType, BindStatement statement)
-            where TPoolConcrete : TPoolContract, IMemoryPool
-            where TPoolContract : IMemoryPool
-        {
-            var contractTypes = new List<Type> { typeof(IDisposable), typeof(TPoolContract) };
-
-            if (includeConcreteType)
-            {
-                contractTypes.Add(typeof(TPoolConcrete));
-            }
-
-            var bindInfo = statement.SpawnBindInfo();
-
-            bindInfo.ContractTypes.AllocFreeAddRange(contractTypes);
-
-            // This interface is used in the optional class PoolCleanupChecker
-            // And also allow people to manually call DespawnAll() for all IMemoryPool
-            // if they want
-            bindInfo.ContractTypes.Add(typeof(IMemoryPool));
-
-            var factoryBindInfo = new FactoryBindInfo(typeof(TPoolConcrete));
-            var poolBindInfo = new MemoryPoolBindInfo();
-
-            statement.SetFinalizer(
-                new MemoryPoolBindingFinalizer<TItemContract>(
-                    bindInfo, factoryBindInfo, poolBindInfo));
-
-            return new MemoryPoolIdInitialSizeMaxSizeBinder<TItemContract>(
-                this, bindInfo, factoryBindInfo, poolBindInfo);
-        }
-
         FactoryToChoiceIdBinder<TParam1, TContract> BindFactoryInternal<TParam1, TContract, TFactoryContract, TFactoryConcrete>()
             where TFactoryConcrete : TFactoryContract, IFactory
             where TFactoryContract : IFactory
@@ -3325,7 +3238,6 @@ namespace Zenject
             }
         }
 
-#if !NOT_UNITY3D
         public Component InstantiateComponentExplicit(
             Type componentType, GameObject gameObject, List<TypeValuePair> extraArgs)
         {
@@ -3425,7 +3337,6 @@ namespace Zenject
 
             return component;
         }
-#endif
 
         ////////////// Execution order ////////////////
 
