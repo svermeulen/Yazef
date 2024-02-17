@@ -5,17 +5,17 @@
 [![CI](https://github.com/svermeulen/Yazef/actions/workflows/main.yml/badge.svg)](https://github.com/svermeulen/Yazef/actions/workflows/main.yml)
 ![GitHub](https://img.shields.io/github/license/svermeulen/Yazef)
 
-# Yazef
+# Yazef: Yet Another Zenject Fork
 
-## **Y**et **A**nother **ZE**nject **F**ork
+## Dependency Injection Framework for Unity Game Engine
 
-This project is a fork of [Zenject](https://github.com/modesttree/zenject) with the goal of being actively maintained.
+This project is a fork of [Zenject / Extenject](https://github.com/modesttree/zenject) with the goal of being actively maintained.
 
 ## 2024 Update
 
 I am the original author of Zenject.  For various reasons, I stopped maintaining it in 2020.  4 years later I am back and currently maintaining this version.
 
-This version is a slightly stripped down version, which means a number of features of Zenject have been removed, in an effort to make it simpler, less bloated, and more maintainable.  If you have previously been using other zenject versions then you will want to review these changes [here](#yazef-vs-zenject).
+This is a slightly stripped down version, which means a number of features of Zenject have been removed, in an effort to make it simpler, less bloated, and more maintainable.  If you have previously been using other zenject versions then you will want to review these changes [here](#yazef-vs-zenject).
 
 Also - note that this library is not as performant as [VContainer](https://github.com/hadashiA/VContainer) so you may want to consider using that instead.
 
