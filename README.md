@@ -9,13 +9,13 @@
 
 ## Dependency Injection Framework for Unity Game Engine
 
-This project is a fork of [Zenject](https://github.com/modesttree/zenject) / [Extenject](https://github.com/Mathijs-Bakker/Extenject) with the goal of being actively maintained.
+This project is a fork of [Zenject](https://github.com/modesttree/zenject) / [Extenject](https://github.com/Mathijs-Bakker/Extenject) with the goal of being actively maintained.  It is named Yazef (shorthand for **Y**et **A**nother **ZE**nject **F**ork) to respect Modest Tree's trademarks on the names Zenject and Extenject.
 
 ## 2024 Update
 
 I am the original author of Zenject.  For various reasons, I stopped maintaining it in 2020.  4 years later I am back and currently maintaining this version.
 
-This is a slightly stripped down version, which means a number of features of Zenject have been removed, in an effort to make it simpler, less bloated, and more maintainable.  If you have previously been using other zenject versions then you will want to review these changes [here](#yazef-vs-zenject).
+This is a slightly stripped down version, which means a number of features of Zenject have been removed, in an effort to make it simpler, less bloated, and more maintainable.  If you have previously been using other Zenject versions then you will want to review these changes [here](#yazef-vs-zenject).
 
 Also - note that this library is not as performant as [VContainer](https://github.com/hadashiA/VContainer) so you may want to consider using that instead.
 
