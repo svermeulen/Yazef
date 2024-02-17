@@ -41,6 +41,12 @@ namespace Zenject
             return new[] { gameObject };
         }
 
+        public bool AutoInjectInHierarchy
+        {
+            get { return _autoInjectInHierarchy; }
+            set { _autoInjectInHierarchy = value; }
+        }
+
         [Inject]
         public void Construct(DiContainer parentContainer)
         {

@@ -21,6 +21,12 @@ namespace Zenject
         [SerializeField]
         bool _autoInjectInHierarchy = false;
 
+        public bool AutoInjectInHierarchy
+        {
+            get { return _autoInjectInHierarchy; }
+            set { _autoInjectInHierarchy = value; }
+        }
+
         public IEnumerable<MonoInstaller> LateInstallers
         {
             get { return _lateInstallers; }

@@ -65,6 +65,7 @@ namespace Zenject
             Assert.That(_sceneContext == null);
 
             _sceneContext = SceneContext.Create();
+            _sceneContext.AutoInjectInHierarchy = true;
             _sceneContext.Install();
 
             Assert.That(ProjectContext.HasInstance);

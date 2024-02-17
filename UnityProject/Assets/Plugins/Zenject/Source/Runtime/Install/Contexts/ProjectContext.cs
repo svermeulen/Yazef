@@ -41,6 +41,12 @@ namespace Zenject
             get { return _instance != null; }
         }
 
+        public bool AutoInjectInHierarchy
+        {
+            get { return _autoInjectInHierarchy; }
+            set { _autoInjectInHierarchy = value; }
+        }
+
         public static ProjectContext Instance
         {
             get
