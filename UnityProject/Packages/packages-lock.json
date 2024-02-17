@@ -1,59 +1,5 @@
 {
   "dependencies": {
-    "com.svkj.ext.humanize": {
-      "version": "file:../../../../../../ext/cs/Humanize/unity/Humanize/Assets/humanize",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
-    "com.svkj.ext.serilog": {
-      "version": "file:../../../../../../ext/cs/serilog/unity/Serilog/Assets/serilog",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.svkj.ext.system.diagnostics.diagnosticsource": "<local>"
-      }
-    },
-    "com.svkj.ext.serilog.sinks.file": {
-      "version": "file:../../../../../../ext/cs/serilog-sinks-file/unity/Serilog/Assets/serilog-sinks-file",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.svkj.ext.serilog": "<local>"
-      }
-    },
-    "com.svkj.ext.system.diagnostics.diagnosticsource": {
-      "version": "file:../../../../../../ext/unity/System.Diagnostics.DiagnosticSource",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.svkj.ext.system.runtime.compilerservices.unsafe": "<local>"
-      }
-    },
-    "com.svkj.ext.system.runtime.compilerservices.unsafe": {
-      "version": "file:../../../../../../ext/unity/System.Runtime.CompilerServices.Unsafe",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
-    "com.svkj.unity.core": {
-      "version": "file:../../../sv-unity-core/Assets/sv-unity-core",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.svkj.ext.serilog.sinks.file": "<local>",
-        "com.svkj.ext.system.diagnostics.diagnosticsource": "<local>"
-      }
-    },
-    "com.svkj.unity.fuzzyfinder": {
-      "version": "file:../../../sv-fuzzy-finder/Assets/sv-fuzzy-finder",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.svkj.unity.core": "<local>",
-        "com.svkj.ext.humanize": "<local>"
-      }
-    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

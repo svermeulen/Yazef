@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.svkj.ext.humanize": "file:../../../../../../ext/cs/Humanize/unity/Humanize/Assets/humanize",
-    "com.svkj.ext.serilog": "file:../../../../../../ext/cs/serilog/unity/Serilog/Assets/serilog",
-    "com.svkj.ext.serilog.sinks.file": "file:../../../../../../ext/cs/serilog-sinks-file/unity/Serilog/Assets/serilog-sinks-file",
-    "com.svkj.ext.system.diagnostics.diagnosticsource": "file:../../../../../../ext/unity/System.Diagnostics.DiagnosticSource",
-    "com.svkj.ext.system.runtime.compilerservices.unsafe": "file:../../../../../../ext/unity/System.Runtime.CompilerServices.Unsafe",
-    "com.svkj.unity.core": "file:../../../sv-unity-core/Assets/sv-unity-core",
-    "com.svkj.unity.fuzzyfinder": "file:../../../sv-fuzzy-finder/Assets/sv-fuzzy-finder",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.collab-proxy": "2.2.0",

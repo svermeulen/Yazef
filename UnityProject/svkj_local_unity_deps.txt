@@ -1,2 +1,0 @@
-com.svkj.unity.core
-com.svkj.unity.fuzzyfinder
