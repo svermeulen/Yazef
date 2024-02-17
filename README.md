@@ -80,7 +80,6 @@ Also - note that this library is not as performant as [VContainer](https://githu
   - [Just-In-Time Resolving Using LazyInject&lt;&gt;](#just-in-time-resolving-using-lazyinjectltgt)
   - [Open Generic Types](#open-generic-types)
   - [Notes About Destruction/Dispose Order](#notes-about-destructiondispose-order)
-  - [UniRx Integration](#unirx-integration)
   - [Creating Unity EditorWindow's with Zenject](#creating-unity-editorwindows-with-zenject)
   - [Optimization Recommendations/Notes](#optimization-recommendationsnotes)
   - [Yazef vs Zenject](#yazef-vs-zenject)
