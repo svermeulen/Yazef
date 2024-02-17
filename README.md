@@ -94,6 +94,7 @@ Also - note that this library is not as performant as [VContainer](https://githu
     - [DiContainer Unbind / Rebind](#dicontainer-unbind--rebind)
     - [Other DiContainer methods](#other-dicontainer-methods)
   - [Frequently Asked Questions](#frequently-asked-questions)
+    - [Why a new name?](#why-a-new-name)
     - [Isn't this overkill?  I mean, is using statically accessible singletons really that bad?](#isnt-this-overkill--i-mean-is-using-statically-accessible-singletons-really-that-bad)
     - [Is there a way to integrate with the upcoming Unity ECS?](#is-there-a-way-to-integrate-with-the-upcoming-unity-ecs)
     - [Does this work on AOT platforms such as iOS and WebGL?](#does-this-work-on-aot-platforms-such-as-ios-and-webgl)
