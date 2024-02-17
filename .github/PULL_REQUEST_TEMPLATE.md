@@ -50,15 +50,9 @@ Issue Number: N/A
 
 On which Unity version has this been tested?
 --------------------------------------------
-- [ ] 2020.4 LTS
-- [ ] 2020.3
-- [ ] 2020.2
-- [ ] 2020.1
-- [ ] 2019.4 LTS
-- [ ] 2019.3
-- [ ] 2019.2
-- [ ] 2019.1
-- [ ] 2018.4 LTS
+- [ ] 2023
+- [ ] 2022 LTS
+- [ ] 2021 LTS
 
 **Scripting backend:**
 - [ ] Mono

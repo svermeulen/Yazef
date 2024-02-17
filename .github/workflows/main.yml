@@ -1,119 +1,24 @@
-name: Continuous Integration
+name: Unity CI
 
-on: 
-  pull_request: {}
-  push:
-    branches: 
-      - master
-    paths-ignore:
-      - 'Documentation/**'
-      - '*.md'
+on: [push, pull_request]
 
-env: 
-  UNITY_LICENSE: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><root>\n    <License id=\"Terms\">\n        <MachineBindings>\n            <Binding Key=\"1\" Value=\"c2c51cf86c7548ec9172c33ee4fe8905\"/>\n            <Binding Key=\"2\" Value=\"c2c51cf86c7548ec9172c33ee4fe8905\"/>\n        </MachineBindings>\n        <MachineID Value=\"jGOG/gpCyVVRuO7sOft8/fNr4PI=\"/>\n        <SerialHash Value=\"20d8e17fa85bafcd88b26e364803e5b088655823\"/>\n        <Features>\n            <Feature Value=\"33\"/>\n            <Feature Value=\"1\"/>\n            <Feature Value=\"12\"/>\n            <Feature Value=\"2\"/>\n            <Feature Value=\"24\"/>\n            <Feature Value=\"3\"/>\n            <Feature Value=\"36\"/>\n            <Feature Value=\"17\"/>\n            <Feature Value=\"19\"/>\n            <Feature Value=\"62\"/>\n        </Features>\n        <DeveloperData Value=\"AQAAAEY0LTUzMkMtODM2Si1VVzJKLVRKR1EtQVY4Rg==\"/>\n        <SerialMasked Value=\"F4-532C-836J-UW2J-TJGQ-XXXX\"/>\n        <StartDate Value=\"2017-12-20T00:00:00\"/>\n        <UpdateDate Value=\"2020-01-26T15:24:01\"/>\n        <InitialActivationDate Value=\"2017-12-20T19:29:43\"/>\n        <LicenseVersion Value=\"6.x\"/>\n        <ClientProvidedVersion Value=\"2019.3.0f1\"/>\n        <AlwaysOnline Value=\"false\"/>\n        <Entitlements>\n            <Entitlement Ns=\"unity_editor\" Tag=\"UnityPersonal\" Type=\"EDITOR\" ValidTo=\"9999-12-31T00:00:00\"/>\n        </Entitlements>\n    </License>\n<Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\"><SignedInfo><CanonicalizationMethod Algorithm=\"http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments\"/><SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\"/><Reference URI=\"#Terms\"><Transforms><Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\"/></Transforms><DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\"/><DigestValue>srmRlNuh0XDH54JucaFTVJIy7xs=</DigestValue></Reference></SignedInfo><SignatureValue>JdxmcngUM8jp1u+uZuLsp8SGiQr+xyJUEfVK/GTFJibVgKkyx9G2P35auCkvlK2Q4jAvcmtPwURn\nUfqDM+29Afv9UoA6T+XjixjpXrFZAr/7ymMMTSCdm0ifczWwoAOS0QnZp03PWTlujUHJhBw27TZe\nc9qI4R8QFRCJ54AgXsN1Vlfqg4EGwQTDoVSAz3XJuTVkdWvcbJpghDLKmu/WW+vfDjif21o4S7et\nX+Eq9BB24V6oTdxgM++wpDhKd4K1NEfaaqct55ONPbWfuzoPVknV3267eHG4+CpTn0LwZo2K7gd9\nEn2aWqxPn/mvKrHTUfGTOWtOoUOgqkleDxVF9A==</SignatureValue></Signature></root>"
-          
 jobs:
-  buildAndTestForSupportedPlatforms:
-    name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
+  test:
+    name: Run Unity Tests
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        projectPath:
-          - UnityProject
-        unityVersion:
-          - 2019.3.0f1
-        targetPlatform:
-          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - StandaloneLinux64 # Build a Linux 64-bit standalone.
-          - iOS # Build an iOS player.
-          - WebGL # WebGL.
-          # Not yet supported GitHub actions:
-          # - Android # Build a Android standalone.
-          # - PS4 # Build a Playstation 4 standalone.
-          # - Windows Store # Build a standalone for Windows Store devices.
-          
-    steps:
+    environment: UnityProject
 
-      #Checkout
-      - uses: actions/checkout@v2
-        with:
-          lfs: true
-      
-      # Cache
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ${{ matrix.projectPath }}/Library
-          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
-          restore-keys: |
-            Library-${{ matrix.projectPath }}-
-            Library-
-            
-      # Run Tests
-      - uses: webbertakken/unity-test-runner@v1.4
-        id: testRunner
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          unityVersion: ${{ matrix.unityVersion }}
-      - uses: actions/upload-artifact@v1
-        with:
-          name: Test results (all modes)
-          path: ${{ steps.testRunner.outputs.artifactsPath }}
-          
-      # Build
-      - uses: webbertakken/unity-builder@v0.10
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          unityVersion: ${{ matrix.unityVersion }}
-          targetPlatform: ${{ matrix.targetPlatform }}
-          customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
-      - uses: actions/upload-artifact@v1
-        with:
-          name: Build
-          path: build
-    
-  Zenject-usage:
-    runs-on: [windows-latest]
-    name: Zenject-usage
     steps:
-      - name: Checkout repository
+      - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: setup-msbuild
-        uses: microsoft/setup-msbuild@v1
-        
-      - name: MSBuild
-        working-directory: AssemblyBuild\Zenject-usage
-        run: msbuild Zenject-usage.sln
-        
-      - name: Upload dll
-        uses: actions/upload-artifact@v1
+      - name: Unity Test Runner
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          name: Zenject-usage
-          path: AssemblyBuild\Zenject-usage\bin\Debug\
-        
-  buildUnity:
-    name: Unity test
-    runs-on: ubuntu-latest
-    needs: Zenject-usage
-    env:
-      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-    steps:
-  
-      # Checkout repository (required to test local actions)
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+          projectPath: UnityProject
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download Zenject-usage
-        uses: actions/download-artifact@v1
-        with:
-          name: Zenject-usage
-
-      - name: Install Zenject-usage
-        run: |
-          ls -l Zenject-usage
-          cp Zenject-usage/Zenject-usage.dll UnityProject/Assets/Plugins/Zenject/Source/Usage
-          ls -l UnityProject/Assets/Plugins/Zenject/Source/Usage
