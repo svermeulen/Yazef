@@ -37,6 +37,11 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           targetPlatform: StandaloneWindows64
           allowDirtyBuild: true
+      - name: Upload Build Artifact (Windows)
+        uses: actions/upload-artifact@v3
+        with:
+          name: Windows-Build
+          path: UnityProject/build/StandaloneWindows64/
 
   android_build:
     needs: unity_test
@@ -53,6 +58,11 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           targetPlatform: Android
           allowDirtyBuild: true
+      - name: Upload Build Artifact (Android)
+        uses: actions/upload-artifact@v3
+        with:
+          name: Android-Build
+          path: UnityProject/build/Android/
 
   webgl_build:
     needs: unity_test
@@ -69,6 +79,11 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           targetPlatform: WebGL
           allowDirtyBuild: true
+      - name: Upload Build Artifact (WebGL)
+        uses: actions/upload-artifact@v3
+        with:
+          name: WebGL-Build
+          path: UnityProject/build/WebGL/
 
   ios_build:
     needs: unity_test
@@ -85,16 +100,9 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           targetPlatform: iOS
           allowDirtyBuild: true
-
-  upload_artifact:
-    needs: [windows_build, android_build, webgl_build, ios_build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v3
+      - name: Upload Build Artifact (iOS)
+        uses: actions/upload-artifact@v3
         with:
-          path: build
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Build
-          path: build
+          name: iOS-Build
+          path: UnityProject/build/iOS/
 
