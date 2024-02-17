@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5223992391882541164}
   - component: {fileID: 1949346397517669642}
+  - component: {fileID: 5902597284458404171}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -49,9 +50,22 @@ MonoBehaviour:
   _installerPrefabs: []
   _findSiblingMonoInstallers: 0
   _parentNewObjectsUnderContext: 0
+  _autoInjectInHierarchy: 0
   _settings:
     _ensureDeterministicDestructionOrderOnApplicationQuit: 0
     _displayWarningWhenResolvingDuringInstall: 1
     _validationRootResolveMethod: 0
     _validationErrorResponse: 0
     _constructorChoiceStrategy: 0
+--- !u!114 &5902597284458404171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637872181011859985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033c3cb8df2541443a9a6ab0ab1e9a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
