@@ -2730,7 +2730,7 @@ The following features of Zenject have been removed in Yazef, in an effort to ma
 * Memory Pools - (Yazef still uses memory pools internally to minimize allocs, but does not expose memory pool functionality as part of API)
 * Async injection support
 
-If you still need these features I would recommend using another Zenject fork instead.
+If you still need these features I would recommend using a previous version for now.  Some of these we intend to add back as their own separate add-on libraries (memory pools and signals).
 
 Also, the following default behaviour has changed:
 
