@@ -2,21 +2,12 @@
 *.pidb
 *.unityproj
 /UpgradeLog.htm
-/UnityProject/Assets/Zenject/AddOns.meta
-/UnityProject/Assets/Zenject/AddOns
-
-# steve: ignore VIM config files that I use
-.vim_l
-.ackrc
-.vimrc_l
-project_root_marker
 
 *.pyc
 
 *.csproj.user
 /SampleBuilds
 
-# Added by Mathijs:
 .DS_Store
 .idea
 
