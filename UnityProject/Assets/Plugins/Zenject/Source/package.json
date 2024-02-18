@@ -1,0 +1,12 @@
+{
+  "name": "com.svermeulen.extenject",
+  "version": "10.0.0",
+  "displayName": "Yazef",
+  "description": "Dependency Injection Framework for Unity3D",
+  "unity": "2019.3",
+  "keywords": [
+    "extenject", "zenject", "dependency injection", "ioc", "dependency"
+  ],
+  "license": "MIT",
+  "dependencies": {}
+}
